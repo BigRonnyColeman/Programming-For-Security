@@ -1,8 +1,8 @@
 const express = require("express");
-const connectDB = require("./Services/db");
+const connectDB = require("./src/services/db");
 const app = express();
 const cookieParser = require("cookie-parser");
-const { adminAuth, userAuth } = require("./middleware/auth.js");
+const { adminAuth, userAuth } = require("./src/middleware/auth.js");
 
 const https = require('https');
 const fs = require('fs');
@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Routes
-app.use("/api/auth", require("./Auth/route"));
+app.use("/api/auth", require("./src/routes/route"));
 
 app.get("/", (req, res) => res.render("home"));
 app.get("/register", (req, res) => res.render("register"));
