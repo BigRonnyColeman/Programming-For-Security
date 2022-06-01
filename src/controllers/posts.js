@@ -1,7 +1,11 @@
-const User = require("../models/User");
+const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const ItemType = require("../models/itemtype");
+const Item = require("../models/item");
+const BoxOfItems = require("../models/boxofitems");
+
+
 
 const jwtSecret =
   "4715aed3c946f7b0a38e6b534a9583628d84e96d10fbc04700770d572af3dce43625dd";
@@ -189,6 +193,27 @@ exports.getAllItemType = (req, res, next) => {
       if (err) return handleError(err);
       var transresult = result.map(function(ItemType) {
           return ItemType.toJSON();
+      });
+      res.status(200).send(transresult);
+    })
+    
+  } catch (error) {
+      if (error instanceof Error) {
+          res.status(500).send(error.message);
+      } else {
+          res.status(500).send('Unexpected Error');
+      }
+  }
+};
+
+exports.getAllItem = (req, res, next) => {
+  try {
+    const query = Item.find();
+    // execute the query at a later time
+    query.exec(function (err, result) {
+      if (err) return handleError(err);
+      var transresult = result.map(function(Item) {
+          return Item.toObject();
       });
       res.status(200).send(transresult);
     })

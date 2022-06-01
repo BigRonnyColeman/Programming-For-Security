@@ -1,10 +1,8 @@
 const Mongoose = require("mongoose");
 
-const ObjectID = Mongoose.Schema.Types.ObjectId();
-
 const ItemSchema = new Mongoose.Schema({
-  _id: ObjectID,
-  boxID: ObjectID,
+  _id: Mongoose.Types.ObjectId,
+  boxID: Mongoose.Types.ObjectId,
 });
 
 const Item = Mongoose.model("item", ItemSchema);
