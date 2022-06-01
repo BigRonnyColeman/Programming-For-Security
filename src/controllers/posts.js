@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const ItemType = require("../models/itemtype");
 
 const jwtSecret =
   "4715aed3c946f7b0a38e6b534a9583628d84e96d10fbc04700770d572af3dce43625dd";
@@ -165,4 +166,38 @@ exports.getUsers = async (req, res, next) => {
     .catch((err) =>
       res.status(401).json({ message: "Not successful", error: err.message })
     );
+};
+
+exports.getinfo = async (req, res, next) => {
+  try {
+      getinfo = "Inventory API - PFS Assignment 2 - Jacqui Meacle, Nathan Kafer & Sophie Coyte";
+      res.status(200).send(getinfo)
+  } catch (error) {
+      if (error instanceof Error) {
+          res.status(500).send(error.message);
+      } else {
+          res.status(500).send('Unexpected Error');
+      }
+  }
+};
+
+exports.getAllItemType = (req, res, next) => {
+  try {
+    const query = ItemType.find();
+    // execute the query at a later time
+    query.exec(function (err, result) {
+      if (err) return handleError(err);
+      var transresult = result.map(function(ItemType) {
+          return ItemType.toJSON();
+      });
+      res.status(200).send(transresult);
+    })
+    
+  } catch (error) {
+      if (error instanceof Error) {
+          res.status(500).send(error.message);
+      } else {
+          res.status(500).send('Unexpected Error');
+      }
+  }
 };

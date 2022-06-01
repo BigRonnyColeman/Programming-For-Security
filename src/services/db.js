@@ -1,6 +1,6 @@
 const Mongoose = require("mongoose");
 
-const localDB = `mongodb+srv://admin:admin@pfs.2q42h.mongodb.net/pfs`;
+const localDB = `mongodb+srv://admin:admin@pfs.2q42h.mongodb.net/inventory`;
 
 
 const connectDB = async () => {

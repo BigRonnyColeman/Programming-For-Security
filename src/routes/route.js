@@ -1,14 +1,18 @@
 const express = require("express");
 const router = express.Router();
 
-const { register, login, update, deleteUser, getUsers } = require("../controllers/posts");
+const { register, login, update, deleteUser, getUsers, getinfo, getAllItemType } = require("../controllers/posts");
 const { adminAuth, userAuth } = require("../middleware/auth");
 
 /* Public API Endpoints */
 router.route("/login").post(login);
+router.route("/getinfo").get(getinfo);
+
 
 /* User API Enpoints */
 router.route("/register").post(userAuth, register);
+router.route("/allInventoryItemType").get(userAuth, getAllItemType);
+
 
 
 /* Admin API Endpoints */
