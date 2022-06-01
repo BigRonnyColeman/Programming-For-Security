@@ -8,6 +8,6 @@ const BoxOfItemsSchema = new Mongoose.Schema({
   RFIDSerialNumber: String,
 });
 
-const BoxOfItems = Mongoose.model("boxofitems", BoxOfItemsSchema);
+const BoxOfItems = Mongoose.model("boxofitem", BoxOfItemsSchema);
 
 module.exports = BoxOfItems;

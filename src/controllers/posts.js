@@ -226,3 +226,186 @@ exports.getAllItem = (req, res, next) => {
       }
   }
 };
+
+exports.getallBoxes = (req, res, next) => {
+  try {
+    const query = BoxOfItems.find();
+    // execute the query at a later time
+    query.exec(function (err, result) {
+      if (err) return handleError(err);
+      var transresult = result.map(function(BoxOfItems) {
+          return BoxOfItems.toObject();
+      });
+      res.status(200).send(transresult);
+    })
+    
+  } catch (error) {
+      if (error instanceof Error) {
+          res.status(500).send(error.message);
+      } else {
+          res.status(500).send('Unexpected Error');
+      }
+  }
+};
+
+// Get By ID
+exports.getItemTypeByID = (req, res, next) => {
+  try {
+    const {_id} = req.body;
+    const query = ItemType.findById(_id);
+    // execute the query at a later time
+    query.exec(function (err, result) {
+      if (err) return handleError(err);
+      if (result!=null) {
+        res.status(200).send(result);
+      } else {
+        res.status(400).send(`"_id": ${JSON.stringify(_id)} Does Not Exist in itemtypes`);
+      }
+      
+    })
+    
+  } catch (error) {
+      if (error instanceof Error) {
+          res.status(500).send(error.message);
+      } else {
+          res.status(500).send('Unexpected Error');
+      }
+  }
+};
+
+exports.getItemByID = (req, res, next) => {
+  try {
+    const {_id} = req.body;
+    const query = Item.findById(_id);
+    // execute the query at a later time
+    query.exec(function (err, result) {
+      if (err) return handleError(err);
+      if (result!=null) {
+        res.status(200).send(result);
+      } else {
+        res.status(400).send(`"_id": ${JSON.stringify(_id)} Does Not Exist in items`);
+      }
+      
+    })
+    
+  } catch (error) {
+      if (error instanceof Error) {
+          res.status(500).send(error.message);
+      } else {
+          res.status(500).send('Unexpected Error');
+      }
+  }
+};
+
+exports.getBoxByID = (req, res, next) => {
+  try {
+    const {_id} = req.body;
+    const query = BoxOfItems.findById(_id);
+    // execute the query at a later time
+    query.exec(function (err, result) {
+      if (err) return handleError(err);
+      if (result!=null) {
+        res.status(200).send(result);
+      } else {
+        res.status(400).send(`"_id": ${JSON.stringify(_id)} Does Not Exist in boxofitems`);
+      }
+    })
+    
+  } catch (error) {
+      if (error instanceof Error) {
+          res.status(500).send(error.message);
+      } else {
+          res.status(400).send(error.message);
+      }
+  }
+};
+
+exports.getItemTypeByName = (req, res, next) => {
+  try {
+    const {itemName} = req.body;
+    const query = ItemType.findOne({ itemName: itemName});
+    // execute the query at a later time
+    query.exec(function (err, result) {
+      if (err) return handleError(err);
+      if (result!=null) {
+        res.status(200).send(result);
+      } else {
+        res.status(400).send(`"_id": ${JSON.stringify(itemName)} Does Not Exist in boxofitems`);
+      }
+    })
+    
+  } catch (error) {
+      if (error instanceof Error) {
+          res.status(500).send(error.message);
+      } else {
+          res.status(400).send(error.message);
+      }
+  }
+};
+
+exports.getItemTypeBySupplier = (req, res, next) => {
+  try {
+    const {supplier} = req.body;
+    const query = ItemType.find({ supplier: supplier});
+    // execute the query at a later time
+    query.exec(function (err, result) {
+      if (err) return handleError(err);
+      var transresult = result.map(function(ItemType) {
+          return ItemType.toObject();
+      });
+      res.status(200).send(transresult);
+    })
+    
+  } catch (error) {
+      if (error instanceof Error) {
+          res.status(500).send(error.message);
+      } else {
+          res.status(400).send(error.message);
+      }
+  }
+};
+
+
+exports.getItemTypeBySell = (req, res, next) => {
+  try {
+    const {Min,Max} = req.body;
+    const query = ItemType.find({itemSel : { $gte :  Min},itemSel : { $lte :  Max}});
+    // execute the query at a later time
+    query.exec(function (err, result) {
+      if (err) return handleError(err);
+      var transresult = result.map(function(ItemType) {
+          return ItemType.toObject();
+      });
+      res.status(200).send(transresult);
+    })
+    
+  } catch (error) {
+      if (error instanceof Error) {
+          res.status(500).send(error.message);
+      } else {
+          res.status(400).send(error.message);
+      }
+  }
+};
+
+exports.getItemTypeByCost = (req, res, next) => {
+  try {
+    const {Min,Max} = req.body;
+    const query = ItemType.find({itemCost : { $gte :  Min},itemCost : { $lte :  Max}});
+    // execute the query at a later time
+    query.exec(function (err, result) {
+      if (err) return handleError(err);
+      var transresult = result.map(function(ItemType) {
+          return ItemType.toObject();
+      });
+      res.status(200).send(transresult);
+    })
+    
+  } catch (error) {
+      if (error instanceof Error) {
+          res.status(500).send(error.message);
+      } else {
+          res.status(400).send(error.message);
+      }
+  }
+};
