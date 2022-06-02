@@ -3,7 +3,6 @@ const Mongoose = require("mongoose");
 
 const BoxOfItemsSchema = new Mongoose.Schema({
   _id: Mongoose.Types.ObjectId,
-  itemTypeID: Mongoose.Types.ObjectId,
   location: String,
   RFIDSerialNumber: String,
 });

@@ -4,7 +4,8 @@ const router = express.Router();
 const { register, login, update, deleteUser, getUsers, getinfo, getAllItemType, getAllItem, getallBoxes, 
     getItemTypeByID, getItemByID, getBoxByID, getItemTypeByName, getItemTypeBySupplier, 
     getItemTypeBySell, getItemTypeByCost, getBoxesByItemType, getItemsByItemType, 
-    getItemsByBoxID, deleteItemType, AddItemType} = require("../controllers/posts");
+    getItemsByBoxID, deleteItemType, AddItemType, UpdateCost, UpdateSell, AddItems,
+    MoveItem, MoveBox, UpdateRFID, SellItem, BoxByRFID} = require("../controllers/posts");
 const { adminAuth, userAuth } = require("../middleware/auth");
 
 /* Public API Endpoints */
@@ -34,7 +35,13 @@ router.route("/ItemTypeByCost").get(userAuth, getItemTypeByCost);
 router.route("/BoxesByItemType").get(userAuth, getBoxesByItemType);
 router.route("/ItemsByItemType").get(userAuth, getItemsByItemType);
 router.route("/ItemsByBoxID").get(userAuth, getItemsByBoxID);
+router.route("/AddItems").post(userAuth, AddItems);
+router.route("/MoveItem").put(userAuth, MoveItem);
+router.route("/MoveBox").put(userAuth, MoveBox);
+router.route("/SellItem").post(userAuth, SellItem);
 
+router.route("/UpdateRFID").put(userAuth, UpdateRFID);
+router.route("/BoxByRFID").get(userAuth, BoxByRFID);
 
 
 
@@ -42,7 +49,8 @@ router.route("/ItemsByBoxID").get(userAuth, getItemsByBoxID);
 router.route("/update").put(adminAuth, update);
 router.route("/deleteUser").delete(adminAuth, deleteUser);
 router.route("/deleteItemType").delete(adminAuth, deleteItemType);
-
+router.route("/UpdateCost").put(adminAuth, UpdateCost);
+router.route("/UpdateSell").put(adminAuth, UpdateSell);
 router.route("/AddItemType").post(adminAuth, AddItemType);
 
 
