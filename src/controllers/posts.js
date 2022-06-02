@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const ItemType = require("../models/itemtype");
 const Item = require("../models/item");
 const BoxOfItems = require("../models/boxofitems");
-
+const Mongoose = require("mongoose");
 
 
 const jwtSecret =
@@ -153,6 +153,22 @@ exports.deleteUser = async (req, res, next) => {
         .json({ message: "An error occurred", error: error.message })
     );
 };
+
+  // Get boxes - delete boxes, get items - delete items
+exports.deleteItemType = async (req, res, next) => {
+  const { _id } = req.body;
+  await ItemType.findOneAndDelete(_id)
+    .then((itemtype) => BoxOfItems.findByIdAndDelete(itemtype))
+    .then((box) => Item.findByIdAndDelete(box))
+    .then((Item))
+      res.status(201).json({ message: "User successfully deleted"})
+    .catch((error) =>
+      res
+        .status(400)
+        .json({ message: "An error occurred", error: error.message })
+    );
+};
+
 
 exports.getUsers = async (req, res, next) => {
   await User.find({})
@@ -399,6 +415,128 @@ exports.getItemTypeByCost = (req, res, next) => {
           return ItemType.toObject();
       });
       res.status(200).send(transresult);
+    })
+    
+  } catch (error) {
+      if (error instanceof Error) {
+          res.status(500).send(error.message);
+      } else {
+          res.status(400).send(error.message);
+      }
+  }
+};
+
+
+exports.getBoxesByItemType = (req, res, next) => {
+  try {
+    const {itemTypeID} = req.body;
+    var result = [];
+    const query = BoxOfItems.find({ $lookup: {
+      from: ItemType,
+      localField: itemTypeID,
+      foreignField: ItemType._id,
+      as: result
+    }});
+    // execute the query at a later time
+    query.exec(function (err, result) {
+      if (err) return handleError(err);
+      var transresult = result.map(function(BoxOfItems) {
+          return BoxOfItems.toObject();
+      });
+      res.status(200).send(transresult);
+    })
+    
+  } catch (error) {
+      if (error instanceof Error) {
+          res.status(500).send(error.message);
+      } else {
+          res.status(400).send(error.message);
+      }
+  }
+};
+
+// Doesnt Work
+exports.getItemsByItemType = (req, res, next) => {
+  try {
+    const {itemTypeID} = req.body;
+    var result = [];
+    const query = ItemType.find({ $lookup: {
+      from: BoxOfItems,
+      localField: _id,
+      foreignField: BoxOfItems.itemTypeID,
+      as: "BoxofItems"
+    }});
+    // execute the query at a later time
+    query.exec(function (err, result) {
+        if (err) return handleError(err);
+        var transresult = result.map(function(ItemType) {
+            return ItemType.toObject();
+        }); 
+      });
+      const query2 = BoxOfItems.find({ $lookup: {
+            from: Item,
+            localField: _id,
+            foreignField: Item.boxID,
+            as: "Items"
+          }} , {
+            $project : {
+              info: $merge(transresult,Items)
+            }
+          });
+      query2.exec(function (err, result) {
+        if (err) return handleError(err);
+        var transresult2 = result.map(function(ItemType) {
+            return ItemType.toObject();
+        });
+        res.status(200).send(transresult2);
+      });
+    
+  } catch (error) {
+      if (error instanceof Error) {
+          res.status(500).send(error.message);
+      } else {
+          res.status(400).send(error.message);
+      }
+  }
+};
+
+exports.getItemsByBoxID = (req, res, next) => {
+  try {
+    const {boxID} = req.body;
+    const query = Item.find( { boxID: { $eq: boxID}});
+    // execute the query at a later time
+    query.exec(function (err, result) {
+      if (err) return handleError(err);
+      var transresult = result.map(function(Item) {
+          return Item.toObject();
+      });
+      res.status(200).send(transresult);
+    })
+    
+  } catch (error) {
+      if (error instanceof Error) {
+          res.status(500).send(error.message);
+      } else {
+          res.status(400).send(error.message);
+      }
+  }
+};
+
+
+exports.AddItemType = (req, res, next) => {
+  try {
+     
+    const {_id,itemName,itemSel,itemCost,supplier } = req.body;
+    var temp = new Mongoose.Types.ObjectId(_id);
+    var ItemTypenew = new ItemType(
+      {_id: temp, itemName: itemName,
+      itemSel: itemSel,
+      itemCost: itemCost,
+      supplier: supplier}
+    );
+    ItemTypenew.save(function (err, ItemTypenew) {
+      if (err) { return next(err) }
+      res.json(201, ItemTypenew)
     })
     
   } catch (error) {

@@ -3,7 +3,8 @@ const router = express.Router();
 
 const { register, login, update, deleteUser, getUsers, getinfo, getAllItemType, getAllItem, getallBoxes, 
     getItemTypeByID, getItemByID, getBoxByID, getItemTypeByName, getItemTypeBySupplier, 
-    getItemTypeBySell, getItemTypeByCost} = require("../controllers/posts");
+    getItemTypeBySell, getItemTypeByCost, getBoxesByItemType, getItemsByItemType, 
+    getItemsByBoxID, deleteItemType, AddItemType} = require("../controllers/posts");
 const { adminAuth, userAuth } = require("../middleware/auth");
 
 /* Public API Endpoints */
@@ -27,14 +28,24 @@ router.route("/ItemTypeByName").get(userAuth, getItemTypeByName);
 // Get By Supplier
 router.route("/ItemTypeBySupplier").get(userAuth, getItemTypeBySupplier);
 // Get By Price Range
-// Find where sellcost > 5, sort by price
 router.route("/ItemTypeBySell").get(userAuth, getItemTypeBySell);
 router.route("/ItemTypeByCost").get(userAuth, getItemTypeByCost);
+// Get By itemType
+router.route("/BoxesByItemType").get(userAuth, getBoxesByItemType);
+router.route("/ItemsByItemType").get(userAuth, getItemsByItemType);
+router.route("/ItemsByBoxID").get(userAuth, getItemsByBoxID);
+
+
 
 
 /* Admin API Endpoints */
 router.route("/update").put(adminAuth, update);
 router.route("/deleteUser").delete(adminAuth, deleteUser);
+router.route("/deleteItemType").delete(adminAuth, deleteItemType);
+
+router.route("/AddItemType").post(adminAuth, AddItemType);
+
+
 router.route("/getUsers").get(adminAuth, getUsers);
 
 module.exports = router;
