@@ -21,27 +21,27 @@ router.route("/allInventoryItemType").get(userAuth, getAllItemType);
 router.route("/allInventoryItem").get(userAuth, getAllItem);
 router.route("/allBoxes").get(userAuth, getallBoxes);
 // Get By ID
-router.route("/ItemTypeByID").get(userAuth, getItemTypeByID);
-router.route("/ItemByID").get(userAuth, getItemByID);
-router.route("/BoxByID").get(userAuth, getBoxByID);
+router.route("/ItemTypeByID").post(userAuth, getItemTypeByID);
+router.route("/ItemByID").post(userAuth, getItemByID);
+router.route("/BoxByID").post(userAuth, getBoxByID);
 // Get By Name
-router.route("/ItemTypeByName").get(userAuth, getItemTypeByName);
+router.route("/ItemTypeByName").post(userAuth, getItemTypeByName);
 // Get By Supplier
-router.route("/ItemTypeBySupplier").get(userAuth, getItemTypeBySupplier);
+router.route("/ItemTypeBySupplier").post(userAuth, getItemTypeBySupplier);
 // Get By Price Range
-router.route("/ItemTypeBySell").get(userAuth, getItemTypeBySell);
-router.route("/ItemTypeByCost").get(userAuth, getItemTypeByCost);
+router.route("/ItemTypeBySell").post(userAuth, getItemTypeBySell);
+router.route("/ItemTypeByCost").post(userAuth, getItemTypeByCost);
 // Get By itemType
-router.route("/BoxesByItemType").get(userAuth, getBoxesByItemType);
-router.route("/ItemsByItemType").get(userAuth, getItemsByItemType);
-router.route("/ItemsByBoxID").get(userAuth, getItemsByBoxID);
+router.route("/BoxesByItemType").post(userAuth, getBoxesByItemType);
+router.route("/ItemsByItemType").post(userAuth, getItemsByItemType);
+router.route("/ItemsByBoxID").post(userAuth, getItemsByBoxID);
 router.route("/AddItems").post(userAuth, AddItems);
 router.route("/MoveItem").put(userAuth, MoveItem);
 router.route("/MoveBox").put(userAuth, MoveBox);
 router.route("/SellItem").post(userAuth, SellItem);
 
 router.route("/UpdateRFID").put(userAuth, UpdateRFID);
-router.route("/BoxByRFID").get(userAuth, BoxByRFID);
+router.route("/BoxByRFID").post(userAuth, BoxByRFID);
 
 
 
