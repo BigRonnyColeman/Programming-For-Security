@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const ItemType = require("../models/itemtype");
 const Item = require("../models/item");
 const BoxOfItems = require("../models/boxofitems");
+const Sold = require("../models/sold");
 var _ = require('underscore');
 
 const Mongoose = require("mongoose");
@@ -18,7 +19,16 @@ const jwtSecret =
 exports.SellItem = (req, res, next) => {
   try {
      
-    const {_id} = req.body;
+    const {_id,time} = req.body;
+      var Itemnew = new Sold(
+        {
+          _id: new Mongoose.Types.ObjectId(time),
+          boxID: new Mongoose.Types.ObjectId(_id),
+        }
+      );
+      Itemnew.save(function (err, Itemnew) {
+        if (err) { return next(err) }
+      })
       const query = Item.deleteMany({boxID : _id});
       const query2 = BoxOfItems.deleteOne({ _id : _id})
       // execute the query at a later time
