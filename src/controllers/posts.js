@@ -487,6 +487,28 @@ exports.getItemsByItemType = (req, res, next) => {
   }
 };
 
+exports.getItemCount = (req, res, next) => {
+  try {
+    const {itemTypeID} = req.params.id;
+    const query = Item.find({ itemTypeID: itemTypeID}).countDocuments();
+    query.exec(function (err, result) {
+      if (err) return handleError(err);
+      if (result!=null) {
+        res.status(200).send(result);
+      } else {
+        res.status(400).send(`"_id": ${(itemTypeID)} Does Not Exist in itemType`);
+      }
+      });
+    
+  } catch (error) {
+      if (error instanceof Error) {
+          res.status(500).send(error.message);
+      } else {
+          res.status(400).send(error.message);
+      }
+  }
+};
+
 exports.getItemsByBoxID = (req, res, next) => {
   try {
     const {boxID} = req.body;
@@ -547,7 +569,7 @@ exports.AddItems = (req, res, next) => {
       );
       Itemnew.save(function (err, Itemnew) {
         if (err) { return next(err) }
-          res.status(200).send(Itemnew);
+          res.status(201).send(Itemnew);
       })
   
   } catch (error) {

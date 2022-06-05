@@ -5,7 +5,7 @@ const { register, login, update, deleteUser, getUsers, getinfo, getAllItemType, 
     getItemTypeByID, getItemByID, getBoxByID, getItemTypeByName, getItemTypeBySupplier, 
     getItemTypeBySell, getItemTypeByCost, getBoxesByItemType, getItemsByItemType, 
     getItemsByBoxID, deleteItemType, AddItemType, UpdateCost, UpdateSell, AddItems,
-    MoveItem, MoveBox, UpdateRFID, SellItem, BoxByRFID, LocationByItemType} = require("../controllers/posts");
+    MoveItem, MoveBox, UpdateRFID, SellItem, BoxByRFID, LocationByItemType, getItemCount} = require("../controllers/posts");
 const { adminAuth, userAuth } = require("../middleware/auth");
 
 /* Public API Endpoints */
@@ -18,8 +18,11 @@ router.route("/register").post(userAuth, register);
 
 // Get ALL
 router.route("/allInventoryItemType").get(userAuth, getAllItemType);
+
+
 router.route("/allInventoryItem").get(userAuth, getAllItem);
 router.route("/allBoxes").get(userAuth, getallBoxes);
+
 // Get By ID
 router.route("/ItemTypeByID").post(userAuth, getItemTypeByID);
 router.route("/ItemByID").post(userAuth, getItemByID);
@@ -43,6 +46,8 @@ router.route("/SellItem").post(userAuth, SellItem);
 router.route("/UpdateRFID").put(userAuth, UpdateRFID);
 router.route("/BoxByRFID").post(userAuth, BoxByRFID);
 router.route("/LocationByItemType").post(userAuth, LocationByItemType);
+router.route("/ItemCount/:id").get(userAuth, getItemCount);
+
 
 
 
