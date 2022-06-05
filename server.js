@@ -3,6 +3,7 @@ const connectDB = require("./src/services/db");
 const app = express();
 const cookieParser = require("cookie-parser");
 const { adminAuth, userAuth } = require("./src/middleware/auth.js");
+const mongoSanitize = require('express-mongo-sanitize');
 
 const https = require('https');
 const fs = require('fs');
@@ -20,6 +21,15 @@ connectDB();
 
 app.use(express.json());
 app.use(cookieParser());
+// By default, $ and . characters are removed completely from user-supplied input in the following places:
+// - req.body
+// - req.params
+// - req.headers
+// - req.query
+app.use(
+  mongoSanitize({
+  }),
+);
 
 // Routes
 app.use("/api/auth", require("./src/routes/route"));
@@ -36,8 +46,8 @@ app.get("/basic", userAuth, (req, res) => res.render("user"));
 
 const server = https
   .createServer(
-		// Provide the private and public key to the server by reading each
-		// file's content with the readFileSync() method.
+    // Provide the private and public key to the server by reading each
+    // file's content with the readFileSync() method.
     {
       key: fs.readFileSync("key.pem"),
       cert: fs.readFileSync("cert.pem"),
