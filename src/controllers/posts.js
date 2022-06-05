@@ -79,7 +79,7 @@ exports.getBoxesByItemType = async (req, res, next) => {
     const query = Item.aggregate(
       [
         { "$match": {"itemTypeID": itemTypeID}},
-
+        
         { 
           "$lookup": {
             from: "boxofitems",
@@ -165,7 +165,10 @@ exports.register = async (req, res, next) => {
 };
 
 exports.login = async (req, res, next) => {
-  const { username, password } = req.body;
+  var { username, password } = req.body;
+  //Cast to string to prevent object Injection (in conjunction with middleware)
+  username = String(username);
+  password = String(password);
 
   // Check if username and password is provided
   if (!username || !password) {
