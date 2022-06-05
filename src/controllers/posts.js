@@ -489,17 +489,19 @@ exports.getItemsByItemType = (req, res, next) => {
 
 exports.getItemCount = (req, res, next) => {
   try {
-    const {itemTypeID} = req.params.id;
-    const query = Item.find({ itemTypeID: itemTypeID}).countDocuments();
-    query.exec(function (err, result) {
-      if (err) return handleError(err);
-      if (result!=null) {
-        res.status(200).send(result);
-      } else {
-        res.status(400).send(`"_id": ${(itemTypeID)} Does Not Exist in itemType`);
+    const {itemTypeID} = req.body;
+    console.log(itemTypeID);
+    Item.countDocuments({itemTypeID : itemTypeID}, function (err, result) {
+      if(result>1) {
+        console.log(result);
+        temp = {"result" : result};
+        res.status(200).send(temp);
       }
-      });
-    
+      else {
+        res.status(500).send(`"_id": ${(itemTypeID)} Does Not Exist in itemType`);
+      }
+    }
+    );
   } catch (error) {
       if (error instanceof Error) {
           res.status(500).send(error.message);
@@ -508,6 +510,7 @@ exports.getItemCount = (req, res, next) => {
       }
   }
 };
+
 
 exports.getItemsByBoxID = (req, res, next) => {
   try {

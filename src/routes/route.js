@@ -46,8 +46,7 @@ router.route("/SellItem").post(userAuth, SellItem);
 router.route("/UpdateRFID").put(userAuth, UpdateRFID);
 router.route("/BoxByRFID").post(userAuth, BoxByRFID);
 router.route("/LocationByItemType").post(userAuth, LocationByItemType);
-router.route("/ItemCount/:id").get(userAuth, getItemCount);
-
+router.route("/ItemCount").post(userAuth, getItemCount);
 
 
 
