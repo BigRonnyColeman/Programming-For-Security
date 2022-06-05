@@ -14,7 +14,6 @@ const { system } = require("nodemon/lib/config");
 const jwtSecret =
   "4715aed3c946f7b0a38e6b534a9583628d84e96d10fbc04700770d572af3dce43625dd";
 
-// NOT WORKING
 
 
   // Get boxes - delete boxes, get items - delete items
@@ -149,7 +148,7 @@ exports.login = async (req, res, next) => {
   }
 };
 
-exports.update = async (req, res, next) => {
+exports.updateUser = async (req, res, next) => {
   const { role, id } = req.body;
   // Verifying if role and id is presnt
   if (role && id) {
@@ -205,7 +204,7 @@ exports.deleteUser = async (req, res, next) => {
 };
 
 
-exports.getUsers = async (req, res, next) => {
+exports.Users = async (req, res, next) => {
   await User.find({})
     .then((users) => {
       const userFunction = users.map((user) => {
@@ -223,7 +222,7 @@ exports.getUsers = async (req, res, next) => {
     );
 };
 
-exports.getinfo = async (req, res, next) => {
+exports.info = async (req, res, next) => {
   try {
       getinfo = "Inventory API - PFS Assignment 2 - Jacqui Meacle, Nathan Kafer & Sophie Coyte";
       res.status(200).send(getinfo)
@@ -236,7 +235,7 @@ exports.getinfo = async (req, res, next) => {
   }
 };
 
-exports.getAllItemType = (req, res, next) => {
+exports.AllItemType = (req, res, next) => {
   try {
     const query = ItemType.find();
     // execute the query at a later time
@@ -257,7 +256,7 @@ exports.getAllItemType = (req, res, next) => {
   }
 };
 
-exports.getAllItem = (req, res, next) => {
+exports.AllItem = (req, res, next) => {
   try {
     const query = Item.find();
     // execute the query at a later time
@@ -278,7 +277,7 @@ exports.getAllItem = (req, res, next) => {
   }
 };
 
-exports.getallBoxes = (req, res, next) => {
+exports.allBoxes = (req, res, next) => {
   try {
     const query = BoxOfItems.find();
     // execute the query at a later time
@@ -299,7 +298,7 @@ exports.getallBoxes = (req, res, next) => {
   }
 };
 
-exports.getItemTypeByID = (req, res, next) => {
+exports.ItemTypeByID = (req, res, next) => {
   try {
     const {_id} = req.body;
     const query = ItemType.findById(_id);
@@ -323,7 +322,7 @@ exports.getItemTypeByID = (req, res, next) => {
   }
 };
 
-exports.getItemByID = (req, res, next) => {
+exports.ItemByID = (req, res, next) => {
   try {
     const {_id} = req.body;
     const query = Item.findById(_id);
@@ -347,7 +346,7 @@ exports.getItemByID = (req, res, next) => {
   }
 };
 
-exports.getBoxByID = (req, res, next) => {
+exports.BoxByID = (req, res, next) => {
   try {
     const {_id} = req.body;
     const query = BoxOfItems.findById(_id);
@@ -370,7 +369,7 @@ exports.getBoxByID = (req, res, next) => {
   }
 };
 
-exports.getItemTypeBySupplier = (req, res, next) => {
+exports.ItemTypeBySupplier = (req, res, next) => {
   try {
     const {supplier} = req.body;
     const query = ItemType.find({ supplier: supplier});
@@ -392,7 +391,7 @@ exports.getItemTypeBySupplier = (req, res, next) => {
   }
 };
 
-exports.getItemTypeBySell = (req, res, next) => {
+exports.ItemTypeBySell = (req, res, next) => {
   try {
     const {Min,Max} = req.body;
     const query = ItemType.find({itemSel : { $gte :  Min},itemSel : { $lte :  Max}});
@@ -414,7 +413,7 @@ exports.getItemTypeBySell = (req, res, next) => {
   }
 };
 
-exports.getItemTypeByCost = (req, res, next) => {
+exports.ItemTypeByCost = (req, res, next) => {
   try {
     const {Min,Max} = req.body;
     const query = ItemType.find({itemCost : { $gte :  Min},itemCost : { $lte :  Max}});
@@ -436,7 +435,7 @@ exports.getItemTypeByCost = (req, res, next) => {
   }
 };
 
-exports.getBoxesByItemType = async (req, res, next) => {
+exports.BoxesByItemType = async (req, res, next) => {
   try {
     const {itemTypeID} = req.body;
     const query = Item.distinct("boxID").find({ itemTypeID: itemTypeID}).select("boxID -_id").populate('boxID');
@@ -466,7 +465,7 @@ exports.getBoxesByItemType = async (req, res, next) => {
   }
 };
 
-exports.getItemsByItemType = (req, res, next) => {
+exports.ItemsByItemType = (req, res, next) => {
   try {
     const {itemTypeID} = req.body;
     const query = Item.find({ itemTypeID: itemTypeID});
@@ -487,7 +486,7 @@ exports.getItemsByItemType = (req, res, next) => {
   }
 };
 
-exports.getItemCount = (req, res, next) => {
+exports.ItemCount = (req, res, next) => {
   try {
     const {itemTypeID} = req.body;
     console.log(itemTypeID);
@@ -512,7 +511,7 @@ exports.getItemCount = (req, res, next) => {
 };
 
 
-exports.getItemsByBoxID = (req, res, next) => {
+exports.ItemsByBoxID = (req, res, next) => {
   try {
     const {boxID} = req.body;
     const query = Item.find( { boxID: { $eq: boxID}});
@@ -717,7 +716,7 @@ exports.BoxByRFID = (req, res, next) => {
   }
 };
 
-exports.getItemTypeByName = (req, res, next) => {
+exports.ItemTypeByName = (req, res, next) => {
   try {
     const {itemName} = req.body;
     const query = ItemType.findOne({ itemName: itemName});
