@@ -16,63 +16,41 @@ const jwtSecret =
 
 // NOT WORKING
 
-exports.SellItem = (req, res, next) => {
+
+  // Get boxes - delete boxes, get items - delete items
+exports.deleteItemType = async (req, res, next) => {
   try {
-     
-    const {_id,time} = req.body;
-      var Itemnew = new Sold(
-        {
-          _id: new Mongoose.Types.ObjectId(time),
-          boxID: new Mongoose.Types.ObjectId(_id),
-        }
-      );
-      Itemnew.save(function (err, Itemnew) {
-        if (err) { return next(err) }
-      })
-      const query = Item.deleteMany({boxID : _id});
-      const query2 = BoxOfItems.deleteOne({ _id : _id})
-      // execute the query at a later time
-      var temp = query.exec(function (err, result) {
+    const {_id} = req.body;
+      Item.countDocuments({itemTypeID : _id}, function (err, result) {
         if (err) return handleError(err);
+        else if(result<1) {
+          const query = ItemType.deleteOne({_id : _id});
+          // execute the query at a later time
+          var temp = query.exec(function (err, result) {
+            if (err) return handleError(err);
+            var transresult = result;
+            console.log(transresult)
+            return transresult;
+          })
+          res.status(200).send("Deleted Successfully");
+        }    
+        else {
+          res.status(200).send("You Cannot Delete an ItemType if there are is Stock within Inventory");
+        }    
         var transresult = result;
         console.log(transresult)
         return transresult;
       })
-      var temp2 = query2.exec(function (err, result) {
-        if (err) return handleError(err);
-        var transresult2 = result;
-        console.log(transresult2)
-        return transresult2;
-      })
-      var string = temp + temp2;
-      res.status(200).send(string);
+
     }
-
   catch (error) {
-      if (error instanceof Error) {
-          res.status(500).send(error.message);
-      } else {
-          res.status(400).send(error.message);
-      }
-  }
+    if (error instanceof Error) {
+        res.status(500).send(error.message);
+    } else {
+        res.status(500).send('Unexpected Error');
+    }
+}
 };
-
-  // Get boxes - delete boxes, get items - delete items
-exports.deleteItemType = async (req, res, next) => {
-    const { _id } = req.body;
-    await ItemType.findOneAndDelete(_id)
-      .then((itemtype) => BoxOfItems.findByIdAndDelete(itemtype))
-      .then((box) => Item.findByIdAndDelete(box))
-      .then((Item))
-        res.status(201).json({ message: "User successfully deleted"})
-      .catch((error) =>
-        res
-          .status(400)
-          .json({ message: "An error occurred", error: error.message })
-      );
-};
-
-
 
 
 // WORKING
@@ -759,6 +737,47 @@ exports.LocationByItemType = async (req, res, next) => {
       });
     
   } catch (error) {
+      if (error instanceof Error) {
+          res.status(500).send(error.message);
+      } else {
+          res.status(400).send(error.message);
+      }
+  }
+};
+
+exports.SellItem = (req, res, next) => {
+  try {
+     
+    const {_id,time} = req.body;
+      var Itemnew = new Sold(
+        {
+          _id: new Mongoose.Types.ObjectId(time),
+          boxID: new Mongoose.Types.ObjectId(_id),
+        }
+      );
+      Itemnew.save(function (err, Itemnew) {
+        if (err) { return next(err) }
+      })
+      const query = Item.deleteMany({boxID : _id});
+      const query2 = BoxOfItems.deleteOne({ _id : _id})
+      // execute the query at a later time
+      var temp = query.exec(function (err, result) {
+        if (err) return handleError(err);
+        var transresult = result;
+        console.log(transresult)
+        return transresult;
+      })
+      var temp2 = query2.exec(function (err, result) {
+        if (err) return handleError(err);
+        var transresult2 = result;
+        console.log(transresult2)
+        return transresult2;
+      })
+      var string = temp + temp2;
+      res.status(200).send(string);
+    }
+
+  catch (error) {
       if (error instanceof Error) {
           res.status(500).send(error.message);
       } else {
