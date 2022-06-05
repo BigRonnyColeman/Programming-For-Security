@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const ItemType = require("../models/itemtype");
 const Item = require("../models/item");
 const BoxOfItems = require("../models/boxofitems");
+var _ = require('underscore');
 
 const Mongoose = require("mongoose");
 var async = require("async");
@@ -18,15 +19,26 @@ exports.SellItem = (req, res, next) => {
   try {
      
     const {_id} = req.body;
-    Item.delete({_id:_id}, function(err,result) {
-      console.log(result)
-      let temp = Sold(result);
-      temp.save();
-    });
-    res.status(200).send("finished");
-    
+      const query = Item.deleteMany({boxID : _id});
+      const query2 = BoxOfItems.deleteOne({ _id : _id})
+      // execute the query at a later time
+      var temp = query.exec(function (err, result) {
+        if (err) return handleError(err);
+        var transresult = result;
+        console.log(transresult)
+        return transresult;
+      })
+      var temp2 = query2.exec(function (err, result) {
+        if (err) return handleError(err);
+        var transresult2 = result;
+        console.log(transresult2)
+        return transresult2;
+      })
+      var string = temp + temp2;
+      res.status(200).send(string);
+    }
 
-  } catch (error) {
+  catch (error) {
       if (error instanceof Error) {
           res.status(500).send(error.message);
       } else {
@@ -50,77 +62,7 @@ exports.deleteItemType = async (req, res, next) => {
       );
 };
 
-exports.getItemTypeByName = (req, res, next) => {
-  try {
-    const {itemName} = req.body;
-    const query = ItemType.findOne({ itemName: itemName});
-    // execute the query at a later time
-    query.exec(function (err, result) {
-      if (err) return handleError(err);
-      if (result!=null) {
-        res.status(200).send(result);
-      } else {
-        res.status(400).send(`"_id": ${JSON.stringify(itemName)} Does Not Exist in boxofitems`);
-      }
-    })
-    
-  } catch (error) {
-      if (error instanceof Error) {
-          res.status(500).send(error.message);
-      } else {
-          res.status(400).send(error.message);
-      }
-  }
-};
 
-exports.getBoxesByItemType = async (req, res, next) => {
-  try {
-    const {itemTypeID} = req.body;
-    const query = Item.aggregate(
-      [
-        { "$match": {"itemTypeID": itemTypeID}},
-
-        { 
-          "$lookup": {
-            from: "boxofitems",
-            localField: "boxID",
-            foreignField: "_id",
-            as: "BoxofItems"
-          }
-        }
-  
-  ]);
-        query.exec(function (err, result) {
-          if (err) return handleError(err);
-          console.log(result);
-          var transresult2 = result.map(function(ItemType) {
-            return ItemType.toObject();
-          });
-          res.status(200).send(transresult2)
-        });
-
-  }
-   catch (error) {
-      if (error instanceof Error) {
-          res.status(500).send(error.message);
-      } else {
-          res.status(400).send(error.message);
-      }
-  }
-};
-
-exports.getLocationByItemType = async (req, res, next) => {
-  try {
-
-  }
-   catch (error) {
-      if (error instanceof Error) {
-          res.status(500).send(error.message);
-      } else {
-          res.status(400).send(error.message);
-      }
-  }
-};
 
 
 // WORKING
@@ -437,7 +379,6 @@ exports.getBoxByID = (req, res, next) => {
   }
 };
 
-
 exports.getItemTypeBySupplier = (req, res, next) => {
   try {
     const {supplier} = req.body;
@@ -507,31 +448,25 @@ exports.getItemTypeByCost = (req, res, next) => {
 exports.getBoxesByItemType = async (req, res, next) => {
   try {
     const {itemTypeID} = req.body;
-    const query = Item.aggregate(
-      [
-        { "$match": {"itemTypeID": itemTypeID}},
-
-        { 
-          "$lookup": {
-            from: "boxofitems",
-            localField: "boxID",
-            foreignField: "_id",
-            as: "BoxofItems"
-          }
-        }
-  
-  ]);
-        query.exec(function (err, result) {
-          if (err) return handleError(err);
-          console.log(result);
-          var transresult2 = result.map(function(ItemType) {
+    const query = Item.distinct("boxID").find({ itemTypeID: itemTypeID}).select("boxID -_id").populate('boxID');
+    query.exec(function (err, result) {
+        if (err) return handleError(err);
+        var transresult = result.map(function(ItemType) {
             return ItemType.toObject();
-          });
-          res.status(200).send(transresult2)
+        }); 
+        var cleaned = [];
+        transresult.forEach(function(itm) {
+            var unique = true;
+            cleaned.forEach(function(itm2) {
+                if (_.isEqual(itm, itm2)) unique = false;
+            });
+            if (unique)  cleaned.push(itm);
         });
 
-  }
-   catch (error) {
+        res.status(200).send(cleaned);
+      });
+    
+  } catch (error) {
       if (error instanceof Error) {
           res.status(500).send(error.message);
       } else {
@@ -756,6 +691,59 @@ exports.BoxByRFID = (req, res, next) => {
         res.status(400).send(`"_id": ${JSON.stringify(_id)} Does Not Exist in boxofitems`);
       }
     })
+    
+  } catch (error) {
+      if (error instanceof Error) {
+          res.status(500).send(error.message);
+      } else {
+          res.status(400).send(error.message);
+      }
+  }
+};
+
+exports.getItemTypeByName = (req, res, next) => {
+  try {
+    const {itemName} = req.body;
+    const query = ItemType.findOne({ itemName: itemName});
+    // execute the query at a later time
+    query.exec(function (err, result) {
+      if (err) return handleError(err);
+      if (result!=null) {
+        res.status(200).send(result);
+      } else {
+        res.status(400).send(`"_id": ${JSON.stringify(itemName)} Does Not Exist in boxofitems`);
+      }
+    })
+    
+  } catch (error) {
+      if (error instanceof Error) {
+          res.status(500).send(error.message);
+      } else {
+          res.status(400).send(error.message);
+      }
+  }
+};
+
+exports.LocationByItemType = async (req, res, next) => {
+  try {
+    const {itemTypeID} = req.body;
+    const query = Item.distinct("boxID").find({ itemTypeID: itemTypeID}).select("boxID -_id").populate('boxID','location');
+    query.exec(function (err, result) {
+        if (err) return handleError(err);
+        var transresult = result.map(function(ItemType) {
+            return ItemType.toObject();
+        }); 
+        var cleaned = [];
+        transresult.forEach(function(itm) {
+            var unique = true;
+            cleaned.forEach(function(itm2) {
+                if (_.isEqual(itm, itm2)) unique = false;
+            });
+            if (unique)  cleaned.push(itm);
+        });
+
+        res.status(200).send(cleaned);
+      });
     
   } catch (error) {
       if (error instanceof Error) {

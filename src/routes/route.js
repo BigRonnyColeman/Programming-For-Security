@@ -5,7 +5,7 @@ const { register, login, update, deleteUser, getUsers, getinfo, getAllItemType, 
     getItemTypeByID, getItemByID, getBoxByID, getItemTypeByName, getItemTypeBySupplier, 
     getItemTypeBySell, getItemTypeByCost, getBoxesByItemType, getItemsByItemType, 
     getItemsByBoxID, deleteItemType, AddItemType, UpdateCost, UpdateSell, AddItems,
-    MoveItem, MoveBox, UpdateRFID, SellItem, BoxByRFID} = require("../controllers/posts");
+    MoveItem, MoveBox, UpdateRFID, SellItem, BoxByRFID, LocationByItemType} = require("../controllers/posts");
 const { adminAuth, userAuth } = require("../middleware/auth");
 
 /* Public API Endpoints */
@@ -42,6 +42,7 @@ router.route("/SellItem").post(userAuth, SellItem);
 
 router.route("/UpdateRFID").put(userAuth, UpdateRFID);
 router.route("/BoxByRFID").post(userAuth, BoxByRFID);
+router.route("/LocationByItemType").post(userAuth, LocationByItemType);
 
 
 
