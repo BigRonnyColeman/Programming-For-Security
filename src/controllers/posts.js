@@ -11,10 +11,8 @@ const Mongoose = require("mongoose");
 var async = require("async");
 const { system } = require("nodemon/lib/config");
 
-const jwtSecret =
-  "4715aed3c946f7b0a38e6b534a9583628d84e96d10fbc04700770d572af3dce43625dd";
-
-
+require('dotenv').config();
+const jwtSecret = process.env.jwtsecret;
 
   // Get boxes - delete boxes, get items - delete items
 exports.deleteItemType = async (req, res, next) => {
@@ -51,10 +49,7 @@ exports.deleteItemType = async (req, res, next) => {
 }
 };
 
-
 // WORKING
-
-
 exports.register = async (req, res, next) => {
   const { username, password } = req.body;
   if (password.length < 6) {
@@ -202,7 +197,6 @@ exports.deleteUser = async (req, res, next) => {
         .json({ message: "An error occurred", error: error.message })
     );
 };
-
 
 exports.Users = async (req, res, next) => {
   await User.find({})
