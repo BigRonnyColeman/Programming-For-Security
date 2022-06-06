@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { register, login, update, deleteUser, Users, info, AllItemType, AllItem, allBoxes, 
+const { register, login, updateUser, deleteUser, Users, info, AllItemType, AllItem, allBoxes, 
     ItemTypeByID, ItemByID, BoxByID, ItemTypeByName, ItemTypeBySupplier, 
     ItemTypeBySell, ItemTypeByCost, BoxesByItemType, ItemsByItemType, 
     ItemsByBoxID, deleteItemType, AddItemType, UpdateCost, UpdateSell, AddItems,
@@ -37,7 +37,7 @@ router.route("/LocationByItemType").post(userAuth, LocationByItemType);
 router.route("/ItemCount").post(userAuth, ItemCount);
 
 /* Admin API Endpoints */
-router.route("/update").put(adminAuth, update);
+router.route("/updateUser").put(adminAuth, updateUser);
 router.route("/deleteUser").delete(adminAuth, deleteUser);
 router.route("/deleteItemType").delete(adminAuth, deleteItemType);
 router.route("/UpdateCost").put(adminAuth, UpdateCost);
