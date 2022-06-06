@@ -785,13 +785,11 @@ exports.SellItem = (req, res, next) => {
       const query2 = BoxOfItems.deleteOne({ _id : _id})
       // execute the query at a later time
       var temp = query.exec(function (err, result) {
-        if (err) return handleError(err);
         var transresult = result;
         console.log(transresult)
         return transresult;
       })
       var temp2 = query2.exec(function (err, result) {
-        if (err) return handleError(err);
         var transresult2 = result;
         console.log(transresult2)
         return transresult2;
