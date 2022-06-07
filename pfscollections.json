@@ -1,0 +1,1888 @@
+{
+	"info": {
+		"_postman_id": "2130b423-2388-4fe3-ab40-504105d7492f",
+		"name": "pfs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PUBLIC",
+			"item": [
+				{
+					"name": "Authentication",
+					"item": [
+						{
+							"name": "Logout",
+							"id": "2188d0a2-9fcb-44c7-9afe-aeea2e33d7c3",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "https://localhost:5000/logout"
+							},
+							"response": []
+						},
+						{
+							"name": "Admin Login",
+							"id": "8f5d8171-ac13-43ff-b755-c9d4ce1d4e79",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true,
+								"strictSSL": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://localhost:5000/api/auth/login"
+							},
+							"response": []
+						},
+						{
+							"name": "User Login",
+							"id": "524184f9-626a-4068-a71e-193991db2910",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"jacquim5678\",\n    \"password\": \"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://localhost:5000/api/auth/login"
+							},
+							"response": []
+						}
+					],
+					"id": "b3e36fb1-592c-4956-9909-1c7b9cbe9519"
+				},
+				{
+					"name": "Get Info",
+					"id": "c4a5d24d-5446-465d-b0dc-fcfe35192157",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://localhost:5000/api/auth/getinfo"
+					},
+					"response": []
+				}
+			],
+			"id": "152dbaae-bfc2-48f9-bdf1-b3009687c224"
+		},
+		{
+			"name": "USER",
+			"item": [
+				{
+					"name": "Accounts",
+					"item": [
+						{
+							"name": "Create User",
+							"id": "f4fbf8f0-7b9a-4fe0-894a-00ce72ff0dff",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"user2\",\n    \"password\": \"password2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://localhost:5000/api/auth/register"
+							},
+							"response": []
+						}
+					],
+					"id": "2b9a5044-cb50-411a-b7d6-81cb0234aabf"
+				},
+				{
+					"name": "Get ALL",
+					"item": [
+						{
+							"name": "ItemTypes",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "09565411-4263-4458-9bd1-6d67d91b3df9",
+										"exec": [
+											"var template = `\r",
+											"    <style>\r",
+											"        table {\r",
+											"            padding: 10px;\r",
+											"        }\r",
+											"        tr{\r",
+											"            padding: 10px;\r",
+											"        }\r",
+											"        th {\r",
+											"            text-align: center;\r",
+											"        }\r",
+											"        td {\r",
+											"            padding: 5px 50px;\r",
+											"        }\r",
+											"        .money {\r",
+											"            text-align: center;\r",
+											"        }\r",
+											"    </style>\r",
+											"    <table>\r",
+											"        <tr bgcolor=\"#50a9f2\">\r",
+											"            <th>ID</th>\r",
+											"            <th>Name</th>\r",
+											"            <th>Supplier</th>\r",
+											"            <th>Item Cost</th>\r",
+											"            <th>Selling Price</th>\r",
+											"        </tr>\r",
+											"\r",
+											"        {{#each response}}\r",
+											"            <tr>\r",
+											"                <td>{{_id}}</td>\r",
+											"                <td>{{itemName}}</td>\r",
+											"                <td>{{supplier}}</td>\r",
+											"                <td>{{itemCost}}</td>\r",
+											"                <td>{{itemSel}}</td>\r",
+											"            </tr>\r",
+											"        {{/each}}\r",
+											"    </table>\r",
+											"`;\r",
+											"pm.visualizer.set(template, {\r",
+											"    response: pm.response.json()\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "9b980137-0f75-48fc-a0ff-caaca3695dc5",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true,
+								"disabledSystemHeaders": {
+									"accept-encoding": true,
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": "https://localhost:5000/api/auth/allInventoryItemType"
+							},
+							"response": []
+						},
+						{
+							"name": "Items",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "09565411-4263-4458-9bd1-6d67d91b3df9",
+										"exec": [
+											"var template = `\r",
+											"    <style>\r",
+											"        table {\r",
+											"            padding: 10px;\r",
+											"        }\r",
+											"        tr{\r",
+											"            padding: 10px;\r",
+											"        }\r",
+											"        th {\r",
+											"            text-align: center;\r",
+											"        }\r",
+											"        td {\r",
+											"            padding: 5px 50px;\r",
+											"        }\r",
+											"        .money {\r",
+											"            text-align: center;\r",
+											"        }\r",
+											"    </style>\r",
+											"    <table>\r",
+											"        <tr bgcolor=\"#50a9f2\">\r",
+											"            <th>ID</th>\r",
+											"            <th>BoxID</th>\r",
+											"            <th>ItemTypeID</th>\r",
+											"        </tr>\r",
+											"\r",
+											"        {{#each response}}\r",
+											"            <tr>\r",
+											"                <td>{{_id}}</td>\r",
+											"                <td>{{boxID}}</td>\r",
+											"                <td>{{itemTypeID}}</td>\r",
+											"            </tr>\r",
+											"        {{/each}}\r",
+											"    </table>\r",
+											"`;\r",
+											"pm.visualizer.set(template, {\r",
+											"    response: pm.response.json()\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "a428f3ed-864c-4d43-8eb6-13bfbd9f6ddd",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true,
+								"disabledSystemHeaders": {
+									"accept-encoding": true,
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": "https://localhost:5000/api/auth/allInventoryItem"
+							},
+							"response": []
+						},
+						{
+							"name": "Boxes of Items",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "09565411-4263-4458-9bd1-6d67d91b3df9",
+										"exec": [
+											"var template = `\r",
+											"    <style>\r",
+											"        table {\r",
+											"            padding: 10px;\r",
+											"        }\r",
+											"        tr{\r",
+											"            padding: 10px;\r",
+											"        }\r",
+											"        th {\r",
+											"            text-align: center;\r",
+											"        }\r",
+											"        td {\r",
+											"            padding: 5px 50px;\r",
+											"        }\r",
+											"        .money {\r",
+											"            text-align: center;\r",
+											"        }\r",
+											"    </style>\r",
+											"    <table>\r",
+											"        <tr bgcolor=\"#50a9f2\">\r",
+											"            <th>ID</th>\r",
+											"            <th>Location</th>\r",
+											"            <th>RFIDSerialNumber</th>\r",
+											"        </tr>\r",
+											"\r",
+											"        {{#each response}}\r",
+											"            <tr>\r",
+											"                <td>{{_id}}</td>\r",
+											"                <td>{{location}}</td>\r",
+											"                <td>{{RFIDSerialNumber}}</td>\r",
+											"            </tr>\r",
+											"        {{/each}}\r",
+											"    </table>\r",
+											"`;\r",
+											"pm.visualizer.set(template, {\r",
+											"    response: pm.response.json()\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "3fd3058a-8bee-4c67-8927-32b566c97dc9",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true,
+								"disabledSystemHeaders": {
+									"accept-encoding": true,
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": "https://localhost:5000/api/auth/allBoxes"
+							},
+							"response": []
+						}
+					],
+					"id": "f65f214b-c753-4f86-bfed-001458646a55"
+				},
+				{
+					"name": "Get by _ID",
+					"item": [
+						{
+							"name": "ItemType",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "09565411-4263-4458-9bd1-6d67d91b3df9",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "528e272e-e838-447a-bc62-d9a7ccb691b6",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true,
+								"disabledSystemHeaders": {
+									"accept-encoding": true,
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\": \"628d84bd4b0f4c4258439998\"\r\n}"
+								},
+								"url": "https://localhost:5000/api/auth/ItemTypeByID"
+							},
+							"response": []
+						},
+						{
+							"name": "Item",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "09565411-4263-4458-9bd1-6d67d91b3df9",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "440cbd5a-80f3-49b0-a93a-e8bf734b6248",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true,
+								"disabledSystemHeaders": {
+									"accept-encoding": true,
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\": \"629726ae9ab748c1792e8737\"\r\n}"
+								},
+								"url": "https://localhost:5000/api/auth/ItemByID"
+							},
+							"response": []
+						},
+						{
+							"name": "Box of Items",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "09565411-4263-4458-9bd1-6d67d91b3df9",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "aedf6e1b-6173-4493-bc84-2e08a7e05174",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true,
+								"disabledSystemHeaders": {
+									"accept-encoding": true,
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\": \"629724d99ab748c1792e8727\"\r\n}"
+								},
+								"url": "https://localhost:5000/api/auth/BoxByID"
+							},
+							"response": []
+						}
+					],
+					"id": "ceaa605e-fd92-41a6-9e43-e921f7c6048d"
+				},
+				{
+					"name": "Get by RFID",
+					"item": [
+						{
+							"name": "Box of Items",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "09565411-4263-4458-9bd1-6d67d91b3df9",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "6e93d47f-17d2-4188-8917-5d0f831798b9",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true,
+								"disabledSystemHeaders": {
+									"accept-encoding": true,
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"RFIDSerialNumber\": \"4xY3t\"\r\n}"
+								},
+								"url": "https://localhost:5000/api/auth/BoxByRFID"
+							},
+							"response": []
+						}
+					],
+					"id": "d6a89806-3644-4d77-b38c-d4ed10b03f2f"
+				},
+				{
+					"name": "Get by itemTypeID",
+					"item": [
+						{
+							"name": "Items",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "09565411-4263-4458-9bd1-6d67d91b3df9",
+										"exec": [
+											"var template = `\r",
+											"    <style>\r",
+											"        table {\r",
+											"            padding: 10px;\r",
+											"        }\r",
+											"        tr{\r",
+											"            padding: 10px;\r",
+											"        }\r",
+											"        th {\r",
+											"            text-align: center;\r",
+											"        }\r",
+											"        td {\r",
+											"            padding: 5px 50px;\r",
+											"        }\r",
+											"        .money {\r",
+											"            text-align: center;\r",
+											"        }\r",
+											"    </style>\r",
+											"    <table>\r",
+											"        <tr bgcolor=\"#50a9f2\">\r",
+											"            <th>ID</th>\r",
+											"            <th>BoxID</th>\r",
+											"            <th>ItemTypeID</th>\r",
+											"        </tr>\r",
+											"\r",
+											"        {{#each response}}\r",
+											"            <tr>\r",
+											"                <td>{{_id}}</td>\r",
+											"                <td>{{boxID}}</td>\r",
+											"                <td>{{itemTypeID}}</td>\r",
+											"            </tr>\r",
+											"        {{/each}}\r",
+											"    </table>\r",
+											"`;\r",
+											"pm.visualizer.set(template, {\r",
+											"    response: pm.response.json()\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "95ad2a83-efeb-4a7a-9709-39e8f38a671d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true,
+								"disabledSystemHeaders": {
+									"accept-encoding": true,
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"itemTypeID\": \"628d84bd4b0f4c4258439998\"\r\n}"
+								},
+								"url": "https://localhost:5000/api/auth/ItemsByItemType"
+							},
+							"response": []
+						},
+						{
+							"name": "Boxes of Items",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "09565411-4263-4458-9bd1-6d67d91b3df9",
+										"exec": [
+											"var template = `\r",
+											"    <style>\r",
+											"        table {\r",
+											"            padding: 10px;\r",
+											"        }\r",
+											"        tr{\r",
+											"            padding: 10px;\r",
+											"        }\r",
+											"        th {\r",
+											"            text-align: center;\r",
+											"        }\r",
+											"        td {\r",
+											"            padding: 5px 50px;\r",
+											"        }\r",
+											"        .money {\r",
+											"            text-align: center;\r",
+											"        }\r",
+											"    </style>\r",
+											"    <table>\r",
+											"        <tr bgcolor=\"#50a9f2\">\r",
+											"            <th>ID</th>\r",
+											"            <th>Location</th>\r",
+											"            <th>RFIDSerialNumber</th>\r",
+											"        </tr>\r",
+											"\r",
+											"        {{#each response}}\r",
+											"            <tr>\r",
+											"                <td>{{boxID._id}}</td>\r",
+											"                <td>{{boxID.location}}</td>\r",
+											"                <td>{{boxID.RFIDSerialNumber}}</td>\r",
+											"            </tr>\r",
+											"        {{/each}}\r",
+											"    </table>\r",
+											"`;\r",
+											"pm.visualizer.set(template, {\r",
+											"    response: pm.response.json()\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "de461515-69af-4e7c-8f8f-100d1d549ecb",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true,
+								"disabledSystemHeaders": {
+									"accept-encoding": true,
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"itemTypeID\" : \"628d84bd4b0f4c4258439998\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://localhost:5000/api/auth/BoxesByItemType"
+							},
+							"response": []
+						},
+						{
+							"name": "Locations",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "09565411-4263-4458-9bd1-6d67d91b3df9",
+										"exec": [
+											"var template = `\r",
+											"    <style>\r",
+											"        table {\r",
+											"            padding: 10px;\r",
+											"        }\r",
+											"        tr{\r",
+											"            padding: 10px;\r",
+											"        }\r",
+											"        th {\r",
+											"            text-align: center;\r",
+											"        }\r",
+											"        td {\r",
+											"            padding: 5px 50px;\r",
+											"        }\r",
+											"        .money {\r",
+											"            text-align: center;\r",
+											"        }\r",
+											"    </style>\r",
+											"    <table>\r",
+											"        <tr bgcolor=\"#50a9f2\">\r",
+											"            <th>ID</th>\r",
+											"            <th>Location</th>\r",
+											"        </tr>\r",
+											"\r",
+											"        {{#each response}}\r",
+											"            <tr>\r",
+											"                <td>{{boxID._id}}</td>\r",
+											"                <td>{{boxID.location}}</td>\r",
+											"            </tr>\r",
+											"        {{/each}}\r",
+											"    </table>\r",
+											"`;\r",
+											"pm.visualizer.set(template, {\r",
+											"    response: pm.response.json()\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "04ebf820-a42c-4ca1-b880-d7d9ae5dc217",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true,
+								"disabledSystemHeaders": {
+									"accept-encoding": true,
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\": \"628da59b4b0f4c425843999e\"\r\n}"
+								},
+								"url": "https://localhost:5000/api/auth/LocationByItemType"
+							},
+							"response": []
+						},
+						{
+							"name": "Item Count",
+							"id": "4793e40f-13a3-4366-83fa-8f89c497f67e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"itemTypeID\" : \"628d84bd4b0f4c4258439998\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://localhost:5000/api/auth/ItemCount"
+							},
+							"response": []
+						}
+					],
+					"id": "68531ee7-2667-4a7b-83ab-03bd86a5e684"
+				},
+				{
+					"name": "Get by boxID",
+					"item": [
+						{
+							"name": "Items",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "09565411-4263-4458-9bd1-6d67d91b3df9",
+										"exec": [
+											"var template = `\r",
+											"    <style>\r",
+											"        table {\r",
+											"            padding: 10px;\r",
+											"        }\r",
+											"        tr{\r",
+											"            padding: 10px;\r",
+											"        }\r",
+											"        th {\r",
+											"            text-align: center;\r",
+											"        }\r",
+											"        td {\r",
+											"            padding: 5px 50px;\r",
+											"        }\r",
+											"        .money {\r",
+											"            text-align: center;\r",
+											"        }\r",
+											"    </style>\r",
+											"    <table>\r",
+											"        <tr bgcolor=\"#50a9f2\">\r",
+											"            <th>ID</th>\r",
+											"            <th>boxID</th>\r",
+											"            <th>itemTypeID</th>\r",
+											"        </tr>\r",
+											"\r",
+											"        {{#each response}}\r",
+											"            <tr>\r",
+											"                <td>{{_id}}</td>\r",
+											"                <td>{{boxID}}</td>\r",
+											"                <td>{{itemTypeID}}</td>\r",
+											"            </tr>\r",
+											"        {{/each}}\r",
+											"    </table>\r",
+											"`;\r",
+											"pm.visualizer.set(template, {\r",
+											"    response: pm.response.json()\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "a86405ad-4136-4cc9-b619-22273f435bf8",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true,
+								"disabledSystemHeaders": {
+									"accept-encoding": true,
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"boxID\": \"629c75101d2d88e41dc6cbb8\"\r\n}"
+								},
+								"url": "https://localhost:5000/api/auth/ItemsByBoxID"
+							},
+							"response": []
+						}
+					],
+					"id": "1de368ab-7ed4-44d3-be9c-4b978a413fe9"
+				},
+				{
+					"name": "Get by Name",
+					"item": [
+						{
+							"name": "ItemType",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "09565411-4263-4458-9bd1-6d67d91b3df9",
+										"exec": [
+											"var template = `\r",
+											"    <style>\r",
+											"        table {\r",
+											"            padding: 10px;\r",
+											"        }\r",
+											"        tr{\r",
+											"            padding: 10px;\r",
+											"        }\r",
+											"        th {\r",
+											"            text-align: center;\r",
+											"        }\r",
+											"        td {\r",
+											"            padding: 5px 50px;\r",
+											"        }\r",
+											"        .money {\r",
+											"            text-align: center;\r",
+											"        }\r",
+											"    </style>\r",
+											"    <table>\r",
+											"        <tr bgcolor=\"#50a9f2\">\r",
+											"            <th>ID</th>\r",
+											"            <th>Name</th>\r",
+											"            <th>Supplier</th>\r",
+											"            <th>Item Cost</th>\r",
+											"            <th>Selling Price</th>\r",
+											"        </tr>\r",
+											"\r",
+											"        {{#each response}}\r",
+											"            <tr>\r",
+											"                <td>{{_id}}</td>\r",
+											"                <td>{{itemName}}</td>\r",
+											"                <td>{{supplier}}</td>\r",
+											"                <td>{{itemCost}}</td>\r",
+											"                <td>{{itemSel}}</td>\r",
+											"            </tr>\r",
+											"        {{/each}}\r",
+											"    </table>\r",
+											"`;\r",
+											"pm.visualizer.set(template, {\r",
+											"    response: pm.response.json()\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "26d7fb31-a64e-47af-8370-a1fc5f527150",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true,
+								"disabledSystemHeaders": {
+									"accept-encoding": true,
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"itemName\": \"Eraser\"\r\n}"
+								},
+								"url": "https://localhost:5000/api/auth/ItemTypeByName"
+							},
+							"response": []
+						}
+					],
+					"id": "17cf9973-b11e-41ca-af9b-ed8c1c4320cf"
+				},
+				{
+					"name": "Get by Supplier",
+					"item": [
+						{
+							"name": "ItemType",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "09565411-4263-4458-9bd1-6d67d91b3df9",
+										"exec": [
+											"var template = `\r",
+											"    <style>\r",
+											"        table {\r",
+											"            padding: 10px;\r",
+											"        }\r",
+											"        tr{\r",
+											"            padding: 10px;\r",
+											"        }\r",
+											"        th {\r",
+											"            text-align: center;\r",
+											"        }\r",
+											"        td {\r",
+											"            padding: 5px 50px;\r",
+											"        }\r",
+											"        .money {\r",
+											"            text-align: center;\r",
+											"        }\r",
+											"    </style>\r",
+											"    <table>\r",
+											"        <tr bgcolor=\"#50a9f2\">\r",
+											"            <th>ID</th>\r",
+											"            <th>Name</th>\r",
+											"            <th>Supplier</th>\r",
+											"            <th>Item Cost</th>\r",
+											"            <th>Selling Price</th>\r",
+											"        </tr>\r",
+											"\r",
+											"        {{#each response}}\r",
+											"            <tr>\r",
+											"                <td>{{_id}}</td>\r",
+											"                <td>{{itemName}}</td>\r",
+											"                <td>{{supplier}}</td>\r",
+											"                <td>{{itemCost}}</td>\r",
+											"                <td>{{itemSel}}</td>\r",
+											"            </tr>\r",
+											"        {{/each}}\r",
+											"    </table>\r",
+											"`;\r",
+											"pm.visualizer.set(template, {\r",
+											"    response: pm.response.json()\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "662a83e7-36b2-463c-9506-976ae2083837",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true,
+								"disabledSystemHeaders": {
+									"accept-encoding": true,
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"supplier\": \"Keji\"\r\n}"
+								},
+								"url": "https://localhost:5000/api/auth/ItemTypeBySupplier"
+							},
+							"response": []
+						}
+					],
+					"id": "fa699e02-2ab9-4cb2-963a-c270d7105105"
+				},
+				{
+					"name": "Get by Sell Price",
+					"item": [
+						{
+							"name": "ItemType",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "09565411-4263-4458-9bd1-6d67d91b3df9",
+										"exec": [
+											"var template = `\r",
+											"    <style>\r",
+											"        table {\r",
+											"            padding: 10px;\r",
+											"        }\r",
+											"        tr{\r",
+											"            padding: 10px;\r",
+											"        }\r",
+											"        th {\r",
+											"            text-align: center;\r",
+											"        }\r",
+											"        td {\r",
+											"            padding: 5px 50px;\r",
+											"        }\r",
+											"        .money {\r",
+											"            text-align: center;\r",
+											"        }\r",
+											"    </style>\r",
+											"    <table>\r",
+											"        <tr bgcolor=\"#50a9f2\">\r",
+											"            <th>ID</th>\r",
+											"            <th>Name</th>\r",
+											"            <th>Supplier</th>\r",
+											"            <th>Item Cost</th>\r",
+											"            <th>Selling Price</th>\r",
+											"        </tr>\r",
+											"\r",
+											"        {{#each response}}\r",
+											"            <tr>\r",
+											"                <td>{{_id}}</td>\r",
+											"                <td>{{itemName}}</td>\r",
+											"                <td>{{supplier}}</td>\r",
+											"                <td>{{itemCost}}</td>\r",
+											"                <td>{{itemSel}}</td>\r",
+											"            </tr>\r",
+											"        {{/each}}\r",
+											"    </table>\r",
+											"`;\r",
+											"pm.visualizer.set(template, {\r",
+											"    response: pm.response.json()\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "3b137102-51f5-4f3a-ae1e-58cc3d623164",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true,
+								"disabledSystemHeaders": {
+									"accept-encoding": true,
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Min\": 0,\r\n    \"Max\": 21\r\n}"
+								},
+								"url": "https://localhost:5000/api/auth/ItemTypeBySell"
+							},
+							"response": []
+						}
+					],
+					"id": "9454ba39-fa8a-4f6f-b258-7b2d2bf7a872"
+				},
+				{
+					"name": "Add Item",
+					"item": [
+						{
+							"name": "Add Item",
+							"id": "9f948f74-db4a-4840-bbf1-1423c44e2de8",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\": \"2dfe4c5a050cf7444cc6b0fa\",\r\n    \"boxID\": \"629726159ab748c1792e8730\",\r\n    \"itemTypeID\": \"628d84bd4b0f4c4258439998\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://localhost:5000/api/auth/AddItems"
+							},
+							"response": []
+						}
+					],
+					"id": "2e3a424e-7340-4c90-941f-d63e0dd8ac98"
+				},
+				{
+					"name": "Change Item",
+					"item": [
+						{
+							"name": "Move Item to Different Box",
+							"id": "b20e68c0-323b-4226-acd9-9452d87541e3",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\": \"2dfe4c5a050cf7444cc6b0fa\",\r\n    \"NewboxID\": \"629726159ab748c1792e8730\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://localhost:5000/api/auth/MoveItem"
+							},
+							"response": []
+						},
+						{
+							"name": "Move Box Location",
+							"id": "51d14a9f-79ea-4254-9a82-cb4c1292c434",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\": \"629724d99ab748c1792e8727\",\r\n    \"newLocation\": \"F54\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://localhost:5000/api/auth/MoveBox"
+							},
+							"response": []
+						},
+						{
+							"name": "Change RFIDSerialNumber",
+							"id": "60dc2e34-6ed7-4faa-943f-c87ebb213222",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"currentRFID\": \"8rTm2\",\r\n    \"newRFID\": \"4rgt%6\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://localhost:5000/api/auth/UpdateRFID"
+							},
+							"response": []
+						}
+					],
+					"id": "b9d6e4de-15b7-40c5-b62b-452dba7b2284"
+				},
+				{
+					"name": "Sell Item",
+					"item": [
+						{
+							"name": "Sell Box",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "fea6ee57-1e45-4bda-8b47-f06be3354c11",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "ce132445-75f6-4c84-8959-8786c551354b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\": \"629726159ab748c1792e8730\",\r\n    \"time\" : {{$randomInt}}\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://localhost:5000/api/auth/SellItem"
+							},
+							"response": []
+						}
+					],
+					"id": "ed6a9a38-c908-4689-a782-901b40c2588d"
+				}
+			],
+			"id": "2ecd80a7-9822-4dac-b978-aed900466120"
+		},
+		{
+			"name": "ADMIN",
+			"item": [
+				{
+					"name": "Accounts",
+					"item": [
+						{
+							"name": "Delete User",
+							"id": "6041cf6c-0ffd-45e2-9dcc-1e2cbe1e108d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"62973076de7402b21ca421c7\",\n    \"role\": \"Basic\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://localhost:5000/api/auth/deleteUser"
+							},
+							"response": []
+						},
+						{
+							"name": "Update User",
+							"id": "326ec275-4ef4-43c4-917e-7a0b6683beb4",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"629bf23713802d8d861e19f1\",\n    \"role\": \"admin\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://localhost:5000/api/auth/updateUser"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Users",
+							"id": "a1f26234-fd81-4fab-ace9-69a95d4ad7c2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "https://localhost:5000/api/auth/getUsers"
+							},
+							"response": []
+						}
+					],
+					"id": "9f7ae5a8-146c-40e1-b82e-61aa938076f5"
+				},
+				{
+					"name": "Delete By ID",
+					"item": [
+						{
+							"name": "ItemType",
+							"id": "68ccb87a-e57a-4a11-b07d-3949451e6b65",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"_id\" : \"628d84bd4b0f4c4258439998\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://localhost:5000/api/auth/deleteItemType"
+							},
+							"response": []
+						}
+					],
+					"id": "0cc5f99c-a56c-4203-9bd3-31e4bced10ef"
+				},
+				{
+					"name": "Add ItemType",
+					"item": [
+						{
+							"name": "Add ItemType",
+							"id": "93eb73c5-7d9b-4b23-91a1-44acfd77b3c4",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"_id\" : \"47afe841af88d94f9249f716\",\n    \"itemName\": \"temp2\",\n    \"itemSel\": 0.45,\n    \"itemCost\": 0.17,\n    \"supplier\": \"temp-Castle\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://localhost:5000/api/auth/AddItemType"
+							},
+							"response": []
+						}
+					],
+					"id": "9db90b80-57ab-46ff-ad8a-857f05077c77"
+				},
+				{
+					"name": "Edit By ID",
+					"item": [
+						{
+							"name": "itemCost",
+							"id": "42b1dc9b-8663-44eb-8127-a01c6d2c02a2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\" : \"628da59b4b0f4c425843999e\",\r\n    \"newCost\": \"23.55\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://localhost:5000/api/auth/UpdateCost"
+							},
+							"response": []
+						},
+						{
+							"name": "itemSell",
+							"id": "042e2330-cdf2-48af-8601-b9df2de45958",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\" : \"628da59b4b0f4c425843999e\",\r\n    \"newSell\": \"35.89\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://localhost:5000/api/auth/UpdateSell"
+							},
+							"response": []
+						}
+					],
+					"id": "ec6ad66f-b018-4a33-a300-5aeb64f41fb7"
+				}
+			],
+			"id": "506a69cd-d978-4c5a-a323-967dc19ffbe6"
+		},
+		{
+			"name": "SECURITY DEMO",
+			"item": [
+				{
+					"name": "Admin Login (Injection)",
+					"id": "bf0107e2-2b7f-45b7-aeac-f8b129b46966",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"strictSSL": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": { \"$ne\": \"1\"},\n    \"password\": { \"$ne\": \"1\"}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://localhost:5000/api/auth/login"
+					},
+					"response": []
+				}
+			],
+			"id": "6683dd49-2b00-4749-ad86-7acbc5000cf2"
+		},
+		{
+			"name": "Presentation",
+			"item": [
+				{
+					"name": "User Login Copy",
+					"id": "bb416e00-32f7-4867-ab81-d0b5b4f1fe58",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"jacquim5678\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://localhost:5000/api/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Create User Copy",
+					"id": "499d876c-98f7-42b3-86e8-abf7c53873ad",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"PresentationTestUser\",\n    \"password\": \"password2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://localhost:5000/api/auth/register"
+					},
+					"response": []
+				},
+				{
+					"name": "ItemTypes Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "09565411-4263-4458-9bd1-6d67d91b3df9",
+								"exec": [
+									"var template = `\r",
+									"    <style>\r",
+									"        table {\r",
+									"            padding: 10px;\r",
+									"        }\r",
+									"        tr{\r",
+									"            padding: 10px;\r",
+									"        }\r",
+									"        th {\r",
+									"            text-align: center;\r",
+									"        }\r",
+									"        td {\r",
+									"            padding: 5px 50px;\r",
+									"        }\r",
+									"        .money {\r",
+									"            text-align: center;\r",
+									"        }\r",
+									"    </style>\r",
+									"    <table>\r",
+									"        <tr bgcolor=\"#50a9f2\">\r",
+									"            <th>ID</th>\r",
+									"            <th>Name</th>\r",
+									"            <th>Supplier</th>\r",
+									"            <th>Item Cost</th>\r",
+									"            <th>Selling Price</th>\r",
+									"        </tr>\r",
+									"\r",
+									"        {{#each response}}\r",
+									"            <tr>\r",
+									"                <td>{{_id}}</td>\r",
+									"                <td>{{itemName}}</td>\r",
+									"                <td>{{supplier}}</td>\r",
+									"                <td>{{itemCost}}</td>\r",
+									"                <td>{{itemSel}}</td>\r",
+									"            </tr>\r",
+									"        {{/each}}\r",
+									"    </table>\r",
+									"`;\r",
+									"pm.visualizer.set(template, {\r",
+									"    response: pm.response.json()\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "c6a93a3f-9d75-4fca-8269-86ddea99e079",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"accept-encoding": true,
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "https://localhost:5000/api/auth/allInventoryItemType"
+					},
+					"response": []
+				},
+				{
+					"name": "Locations Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "09565411-4263-4458-9bd1-6d67d91b3df9",
+								"exec": [
+									"var template = `\r",
+									"    <style>\r",
+									"        table {\r",
+									"            padding: 10px;\r",
+									"        }\r",
+									"        tr{\r",
+									"            padding: 10px;\r",
+									"        }\r",
+									"        th {\r",
+									"            text-align: center;\r",
+									"        }\r",
+									"        td {\r",
+									"            padding: 5px 50px;\r",
+									"        }\r",
+									"        .money {\r",
+									"            text-align: center;\r",
+									"        }\r",
+									"    </style>\r",
+									"    <table>\r",
+									"        <tr bgcolor=\"#50a9f2\">\r",
+									"            <th>ID</th>\r",
+									"            <th>Location</th>\r",
+									"        </tr>\r",
+									"\r",
+									"        {{#each response}}\r",
+									"            <tr>\r",
+									"                <td>{{boxID._id}}</td>\r",
+									"                <td>{{boxID.location}}</td>\r",
+									"            </tr>\r",
+									"        {{/each}}\r",
+									"    </table>\r",
+									"`;\r",
+									"pm.visualizer.set(template, {\r",
+									"    response: pm.response.json()\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "3f2cc667-d912-4eec-99df-699a2d4adb5f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"accept-encoding": true,
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"628da59b4b0f4c425843999e\"\r\n}"
+						},
+						"url": "https://localhost:5000/api/auth/LocationByItemType"
+					},
+					"response": []
+				},
+				{
+					"name": "Item Count Copy",
+					"id": "00c0a9c6-687b-4e7c-becd-d087fe13b5c7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"itemTypeID\" : \"628d84bd4b0f4c4258439998\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://localhost:5000/api/auth/ItemCount"
+					},
+					"response": []
+				},
+				{
+					"name": "Move Box Location Copy",
+					"id": "a773cfdd-76a6-4362-9351-c95753ff8486",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"629724d99ab748c1792e8727\",\r\n    \"newLocation\": \"randomlocation\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://localhost:5000/api/auth/MoveBox"
+					},
+					"response": []
+				},
+				{
+					"name": "Check Location Change",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "09565411-4263-4458-9bd1-6d67d91b3df9",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "0251d2ef-2bad-4c14-8bd2-bdfb56fe5b74",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"accept-encoding": true,
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"629724d99ab748c1792e8727\"\r\n}"
+						},
+						"url": "https://localhost:5000/api/auth/BoxByID"
+					},
+					"response": []
+				},
+				{
+					"name": "Sell Box Copy",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "fea6ee57-1e45-4bda-8b47-f06be3354c11",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "bb7a0135-19a3-42c4-8e4a-37667ba29418",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"629c85911d2d88e41dc6cbbe\",\r\n    \"time\" : {{$randomInt}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://localhost:5000/api/auth/SellItem"
+					},
+					"response": []
+				},
+				{
+					"name": "Check Box Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "09565411-4263-4458-9bd1-6d67d91b3df9",
+								"exec": [
+									"var template = `\r",
+									"    <style>\r",
+									"        table {\r",
+									"            padding: 10px;\r",
+									"        }\r",
+									"        tr{\r",
+									"            padding: 10px;\r",
+									"        }\r",
+									"        th {\r",
+									"            text-align: center;\r",
+									"        }\r",
+									"        td {\r",
+									"            padding: 5px 50px;\r",
+									"        }\r",
+									"        .money {\r",
+									"            text-align: center;\r",
+									"        }\r",
+									"    </style>\r",
+									"    <table>\r",
+									"        <tr bgcolor=\"#50a9f2\">\r",
+									"            <th>ID</th>\r",
+									"            <th>boxID</th>\r",
+									"            <th>itemTypeID</th>\r",
+									"        </tr>\r",
+									"\r",
+									"        {{#each response}}\r",
+									"            <tr>\r",
+									"                <td>{{_id}}</td>\r",
+									"                <td>{{boxID}}</td>\r",
+									"                <td>{{itemTypeID}}</td>\r",
+									"            </tr>\r",
+									"        {{/each}}\r",
+									"    </table>\r",
+									"`;\r",
+									"pm.visualizer.set(template, {\r",
+									"    response: pm.response.json()\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "35c044a0-7dba-4bee-8d19-6c64be8c4d68",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"accept-encoding": true,
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"boxID\": \"629c85911d2d88e41dc6cbbe\"\r\n}"
+						},
+						"url": "https://localhost:5000/api/auth/ItemsByBoxID"
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Login Copy",
+					"id": "0db3870b-6211-4b2c-b4df-8c590df1503c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"strictSSL": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://localhost:5000/api/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "ItemType Copy",
+					"id": "6e710ba4-5538-4bf0-8ab9-9b3acb5471fe",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_id\" : \"628da59b4b0f4c425843999e\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://localhost:5000/api/auth/deleteItemType"
+					},
+					"response": []
+				}
+			],
+			"id": "ffc65cb6-dd94-4908-a911-9a0f0859b1b5"
+		}
+	]
+}
