@@ -1,6 +1,4 @@
 const Mongoose = require("mongoose");
-const passwordComplexity = require("joi-password-complexity");
-passwordComplexity().validate("aPassword123!");
 
 const UserSchema = new Mongoose.Schema({
   username: {

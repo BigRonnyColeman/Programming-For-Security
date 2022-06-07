@@ -7,7 +7,9 @@ const mongoSanitize = require('express-mongo-sanitize'); //NOSQL INJECTION SANIT
 const helmet = require('helmet'); //XXS AND OTHER VULNS
 var winston = require('winston'), //LOGGING
 expressWinston = require('express-winston');//LOGGING
-const rateLimit = require('express-rate-limit')
+const rateLimit = require('express-rate-limit') //RATE LIMITING
+
+require('dotenv').config();
 
 const https = require('https');
 const fs = require('fs');
@@ -17,7 +19,7 @@ const options = {
   cert: fs.readFileSync('cert.pem')
 };
 
-const PORT = 5000;
+const PORT = process.env.port;
 
 app.set("view engine", "ejs");
 
@@ -31,10 +33,7 @@ app.use(cookieParser());
 // - req.params
 // - req.headers
 // - req.query
-app.use(
-  mongoSanitize({
-  }),
-);
+app.use(mongoSanitize());
 
 //Content Security (XXS)
 //Strict Transport Security headers
@@ -62,8 +61,8 @@ app.use(expressWinston.logger({
 
 //Rate Limiting
 const limiter = rateLimit({
-  windowMs: 2 * 60 * 1000, // 15 minutes
-  max: 10, // Limit each IP to 2 requests per `window` (here, per 15 minutes)
+  windowMs: 2 * 60 * 1000, // 2 minutes
+  max: 10, // Limit each IP to 10 requests per `window` (here, per 2 minutes)
   standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
   handler: function (req, res, /*next*/) {

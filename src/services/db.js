@@ -1,7 +1,8 @@
 const Mongoose = require("mongoose");
 
-const localDB = `mongodb+srv://admin:admin@pfs.2q42h.mongodb.net/inventory`;
+require('dotenv').config();
 
+const localDB = process.env.db;
 
 const connectDB = async () => {
   await Mongoose.connect(localDB, {
