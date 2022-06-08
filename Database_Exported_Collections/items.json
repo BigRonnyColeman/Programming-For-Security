@@ -1,0 +1,668 @@
+[{
+  "_id": {
+    "$oid": "629727739ab748c1792e873b"
+  },
+  "boxID": {
+    "$oid": "629724d99ab748c1792e8727"
+  },
+  "itemTypeID": {
+    "$oid": "628d84bd4b0f4c4258439998"
+  }
+},{
+  "_id": {
+    "$oid": "629727809ab748c1792e873c"
+  },
+  "boxID": {
+    "$oid": "629724d99ab748c1792e8727"
+  },
+  "itemTypeID": {
+    "$oid": "628d84bd4b0f4c4258439998"
+  }
+},{
+  "_id": {
+    "$oid": "629727869ab748c1792e873d"
+  },
+  "boxID": {
+    "$oid": "629724d99ab748c1792e8727"
+  },
+  "itemTypeID": {
+    "$oid": "628d84bd4b0f4c4258439998"
+  }
+},{
+  "_id": {
+    "$oid": "6297278f9ab748c1792e873e"
+  },
+  "boxID": {
+    "$oid": "629724d99ab748c1792e8727"
+  },
+  "itemTypeID": {
+    "$oid": "628d84bd4b0f4c4258439998"
+  }
+},{
+  "_id": {
+    "$oid": "629727979ab748c1792e873f"
+  },
+  "boxID": {
+    "$oid": "629724d99ab748c1792e8727"
+  },
+  "itemTypeID": {
+    "$oid": "628d84bd4b0f4c4258439998"
+  }
+},{
+  "_id": {
+    "$oid": "629728aa9ab748c1792e8749"
+  },
+  "boxID": {
+    "$oid": "6297262d9ab748c1792e8731"
+  },
+  "itemTypeID": {
+    "$oid": "628d84bd4b0f4c4258439998"
+  }
+},{
+  "_id": {
+    "$oid": "629728bd9ab748c1792e874a"
+  },
+  "boxID": {
+    "$oid": "6297262d9ab748c1792e8731"
+  },
+  "itemTypeID": {
+    "$oid": "628d84bd4b0f4c4258439998"
+  }
+},{
+  "_id": {
+    "$oid": "629728c19ab748c1792e874b"
+  },
+  "boxID": {
+    "$oid": "6297262d9ab748c1792e8731"
+  },
+  "itemTypeID": {
+    "$oid": "628d84bd4b0f4c4258439998"
+  }
+},{
+  "_id": {
+    "$oid": "629728c59ab748c1792e874c"
+  },
+  "boxID": {
+    "$oid": "6297262d9ab748c1792e8731"
+  },
+  "itemTypeID": {
+    "$oid": "628d84bd4b0f4c4258439998"
+  }
+},{
+  "_id": {
+    "$oid": "629728c99ab748c1792e874d"
+  },
+  "boxID": {
+    "$oid": "6297262d9ab748c1792e8731"
+  },
+  "itemTypeID": {
+    "$oid": "628d84bd4b0f4c4258439998"
+  }
+},{
+  "_id": {
+    "$oid": "629728cd9ab748c1792e874e"
+  },
+  "boxID": {
+    "$oid": "6297262d9ab748c1792e8731"
+  },
+  "itemTypeID": {
+    "$oid": "628d84bd4b0f4c4258439998"
+  }
+},{
+  "_id": {
+    "$oid": "629728d19ab748c1792e874f"
+  },
+  "boxID": {
+    "$oid": "6297262d9ab748c1792e8731"
+  },
+  "itemTypeID": {
+    "$oid": "628d84bd4b0f4c4258439998"
+  }
+},{
+  "_id": {
+    "$oid": "629728d59ab748c1792e8750"
+  },
+  "boxID": {
+    "$oid": "6297262d9ab748c1792e8731"
+  },
+  "itemTypeID": {
+    "$oid": "628d84bd4b0f4c4258439998"
+  }
+},{
+  "_id": {
+    "$oid": "629728d99ab748c1792e8751"
+  },
+  "boxID": {
+    "$oid": "6297262d9ab748c1792e8731"
+  },
+  "itemTypeID": {
+    "$oid": "628d84bd4b0f4c4258439998"
+  }
+},{
+  "_id": {
+    "$oid": "629728dd9ab748c1792e8752"
+  },
+  "boxID": {
+    "$oid": "6297262d9ab748c1792e8731"
+  },
+  "itemTypeID": {
+    "$oid": "628d84bd4b0f4c4258439998"
+  }
+},{
+  "_id": {
+    "$oid": "629728e29ab748c1792e8753"
+  },
+  "boxID": {
+    "$oid": "6297262d9ab748c1792e8731"
+  },
+  "itemTypeID": {
+    "$oid": "628d84bd4b0f4c4258439998"
+  }
+},{
+  "_id": {
+    "$oid": "629729849ab748c1792e8757"
+  },
+  "boxID": {
+    "$oid": "629729299ab748c1792e8756"
+  },
+  "itemTypeID": {
+    "$oid": "628da59b4b0f4c425843999e"
+  }
+},{
+  "_id": {
+    "$oid": "629729929ab748c1792e8758"
+  },
+  "boxID": {
+    "$oid": "629729299ab748c1792e8756"
+  },
+  "itemTypeID": {
+    "$oid": "628da59b4b0f4c425843999e"
+  }
+},{
+  "_id": {
+    "$oid": "629729979ab748c1792e8759"
+  },
+  "boxID": {
+    "$oid": "629729299ab748c1792e8756"
+  },
+  "itemTypeID": {
+    "$oid": "628da59b4b0f4c425843999e"
+  }
+},{
+  "_id": {
+    "$oid": "6297299c9ab748c1792e875a"
+  },
+  "boxID": {
+    "$oid": "629729299ab748c1792e8756"
+  },
+  "itemTypeID": {
+    "$oid": "628da59b4b0f4c425843999e"
+  }
+},{
+  "_id": {
+    "$oid": "629729a09ab748c1792e875b"
+  },
+  "boxID": {
+    "$oid": "629729299ab748c1792e8756"
+  },
+  "itemTypeID": {
+    "$oid": "628da59b4b0f4c425843999e"
+  }
+},{
+  "_id": {
+    "$oid": "629729a49ab748c1792e875c"
+  },
+  "boxID": {
+    "$oid": "629729299ab748c1792e8756"
+  },
+  "itemTypeID": {
+    "$oid": "628da59b4b0f4c425843999e"
+  }
+},{
+  "_id": {
+    "$oid": "629729a89ab748c1792e875d"
+  },
+  "boxID": {
+    "$oid": "629729299ab748c1792e8756"
+  },
+  "itemTypeID": {
+    "$oid": "628da59b4b0f4c425843999e"
+  }
+},{
+  "_id": {
+    "$oid": "629729ac9ab748c1792e875e"
+  },
+  "boxID": {
+    "$oid": "629729299ab748c1792e8756"
+  },
+  "itemTypeID": {
+    "$oid": "628da59b4b0f4c425843999e"
+  }
+},{
+  "_id": {
+    "$oid": "629729b09ab748c1792e875f"
+  },
+  "boxID": {
+    "$oid": "629729299ab748c1792e8756"
+  },
+  "itemTypeID": {
+    "$oid": "628da59b4b0f4c425843999e"
+  }
+},{
+  "_id": {
+    "$oid": "6298a83107af9ab7b09aac4e"
+  },
+  "boxID": {
+    "$oid": "6298a83107af9ab7b09aac4f"
+  },
+  "itemTypeID": {
+    "$oid": "6298a83107af9ab7b09aac50"
+  }
+},{
+  "_id": {
+    "$oid": "629c67a71d2d88e41dc6cb32"
+  },
+  "boxID": {
+    "$oid": "629729299ab748c1792e8756"
+  },
+  "itemTypeID": {
+    "$oid": "628da59b4b0f4c425843999e"
+  }
+},{
+  "_id": {
+    "$oid": "629c67e21d2d88e41dc6cb35"
+  },
+  "boxID": {
+    "$oid": "629729299ab748c1792e8756"
+  },
+  "itemTypeID": {
+    "$oid": "628da59b4b0f4c425843999e"
+  }
+},{
+  "_id": {
+    "$oid": "629c680a1d2d88e41dc6cb38"
+  },
+  "boxID": {
+    "$oid": "629729299ab748c1792e8756"
+  },
+  "itemTypeID": {
+    "$oid": "628da59b4b0f4c425843999e"
+  }
+},{
+  "_id": {
+    "$oid": "629c682b1d2d88e41dc6cb3b"
+  },
+  "boxID": {
+    "$oid": "629729299ab748c1792e8756"
+  },
+  "itemTypeID": {
+    "$oid": "628da59b4b0f4c425843999e"
+  }
+},{
+  "_id": {
+    "$oid": "629c684d1d2d88e41dc6cb3e"
+  },
+  "boxID": {
+    "$oid": "629729299ab748c1792e8756"
+  },
+  "itemtypeID": {
+    "$oid": "628da59b4b0f4c425843999e"
+  }
+},{
+  "_id": {
+    "$oid": "629c686f1d2d88e41dc6cb41"
+  },
+  "boxID": {
+    "$oid": "629729299ab748c1792e8756"
+  },
+  "itemTypeID": {
+    "$oid": "628da59b4b0f4c425843999e"
+  }
+},{
+  "_id": {
+    "$oid": "629c6a341d2d88e41dc6cb47"
+  },
+  "boxID": {
+    "$oid": "629c69db1d2d88e41dc6cb46"
+  },
+  "itemTypeID": {
+    "$oid": "629c68c61d2d88e41dc6cb44"
+  }
+},{
+  "_id": {
+    "$oid": "629c6b5e1d2d88e41dc6cb4f"
+  },
+  "boxID": {
+    "$oid": "629c69db1d2d88e41dc6cb46"
+  },
+  "itemTypeID": {
+    "$oid": "629c68c61d2d88e41dc6cb44"
+  }
+},{
+  "_id": {
+    "$oid": "629c6b871d2d88e41dc6cb52"
+  },
+  "boxID": {
+    "$oid": "629c69db1d2d88e41dc6cb46"
+  },
+  "itemtypeID": {
+    "$oid": "629c68c61d2d88e41dc6cb44"
+  }
+},{
+  "_id": {
+    "$oid": "629c6bab1d2d88e41dc6cb55"
+  },
+  "boxID": {
+    "$oid": "629c69db1d2d88e41dc6cb46"
+  },
+  "itemTypeID": {
+    "$oid": "629c68c61d2d88e41dc6cb44"
+  }
+},{
+  "_id": {
+    "$oid": "629c6bd41d2d88e41dc6cb58"
+  },
+  "boxID": {
+    "$oid": "629c69db1d2d88e41dc6cb46"
+  },
+  "itemTypeID": {
+    "$oid": "629c68c61d2d88e41dc6cb44"
+  }
+},{
+  "_id": {
+    "$oid": "629c6bfc1d2d88e41dc6cb5b"
+  },
+  "boxID": {
+    "$oid": "629c69db1d2d88e41dc6cb46"
+  },
+  "itemTypeID": {
+    "$oid": "629c68c61d2d88e41dc6cb44"
+  }
+},{
+  "_id": {
+    "$oid": "629c6c271d2d88e41dc6cb5e"
+  },
+  "boxID": {
+    "$oid": "629c69db1d2d88e41dc6cb46"
+  },
+  "itemTypeID": {
+    "$oid": "629c68c61d2d88e41dc6cb44"
+  }
+},{
+  "_id": {
+    "$oid": "629c6c4d1d2d88e41dc6cb61"
+  },
+  "boxID": {
+    "$oid": "629c69db1d2d88e41dc6cb46"
+  },
+  "itemTypeID": {
+    "$oid": "629c68c61d2d88e41dc6cb44"
+  }
+},{
+  "_id": {
+    "$oid": "629c6c751d2d88e41dc6cb64"
+  },
+  "boxID": {
+    "$oid": "629c69db1d2d88e41dc6cb46"
+  },
+  "itemTypeID": {
+    "$oid": "629c68c61d2d88e41dc6cb44"
+  }
+},{
+  "_id": {
+    "$oid": "629c6ca81d2d88e41dc6cb67"
+  },
+  "boxID": {
+    "$oid": "629c69db1d2d88e41dc6cb46"
+  },
+  "itemTypeID": {
+    "$oid": "629c68c61d2d88e41dc6cb44"
+  }
+},{
+  "_id": {
+    "$oid": "629c6ccb1d2d88e41dc6cb6a"
+  },
+  "boxID": {
+    "$oid": "629c69db1d2d88e41dc6cb46"
+  },
+  "itemTypeID": {
+    "$oid": "629c68c61d2d88e41dc6cb44"
+  }
+},{
+  "_id": {
+    "$oid": "629c6cea1d2d88e41dc6cb6d"
+  },
+  "boxID": {
+    "$oid": "629c69db1d2d88e41dc6cb46"
+  },
+  "itemTypeID": {
+    "$oid": "629c68c61d2d88e41dc6cb44"
+  }
+},{
+  "_id": {
+    "$oid": "629c6d0c1d2d88e41dc6cb70"
+  },
+  "boxID": {
+    "$oid": "629c69db1d2d88e41dc6cb46"
+  },
+  "itemTypeID": {
+    "$oid": "629c68c61d2d88e41dc6cb44"
+  }
+},{
+  "_id": {
+    "$oid": "629c6e281d2d88e41dc6cb74"
+  },
+  "boxID": {
+    "$oid": "629c6db61d2d88e41dc6cb73"
+  },
+  "itemTypeID": {
+    "$oid": "629c693a1d2d88e41dc6cb45"
+  }
+},{
+  "_id": {
+    "$oid": "629c6e6f1d2d88e41dc6cb78"
+  },
+  "boxID": {
+    "$oid": "629c6db61d2d88e41dc6cb73"
+  },
+  "itemTypeID": {
+    "$oid": "629c693a1d2d88e41dc6cb45"
+  }
+},{
+  "_id": {
+    "$oid": "629c6e901d2d88e41dc6cb7b"
+  },
+  "boxID": {
+    "$oid": "629c6db61d2d88e41dc6cb73"
+  },
+  "itemTypeID": {
+    "$oid": "629c693a1d2d88e41dc6cb45"
+  }
+},{
+  "_id": {
+    "$oid": "629c6eb11d2d88e41dc6cb7e"
+  },
+  "boxID": {
+    "$oid": "629c6db61d2d88e41dc6cb73"
+  },
+  "itemTypeID": {
+    "$oid": "629c693a1d2d88e41dc6cb45"
+  }
+},{
+  "_id": {
+    "$oid": "629c6edf1d2d88e41dc6cb81"
+  },
+  "boxID": {
+    "$oid": "629c6db61d2d88e41dc6cb73"
+  },
+  "itemTypeID": {
+    "$oid": "629c693a1d2d88e41dc6cb45"
+  }
+},{
+  "_id": {
+    "$oid": "629c6f0a1d2d88e41dc6cb84"
+  },
+  "boxID": {
+    "$oid": "629c6db61d2d88e41dc6cb73"
+  },
+  "itemTypeID": {
+    "$oid": "629c693a1d2d88e41dc6cb45"
+  }
+},{
+  "_id": {
+    "$oid": "629c6f2f1d2d88e41dc6cb87"
+  },
+  "boxID": {
+    "$oid": "629c6db61d2d88e41dc6cb73"
+  },
+  "itemTypeID": {
+    "$oid": "629c693a1d2d88e41dc6cb45"
+  }
+},{
+  "_id": {
+    "$oid": "629c6f531d2d88e41dc6cb8a"
+  },
+  "boxID": {
+    "$oid": "629c6db61d2d88e41dc6cb73"
+  },
+  "itemTypeID": {
+    "$oid": "629c693a1d2d88e41dc6cb45"
+  }
+},{
+  "_id": {
+    "$oid": "629c6f701d2d88e41dc6cb8d"
+  },
+  "boxID": {
+    "$oid": "629c6db61d2d88e41dc6cb73"
+  },
+  "itemTypeID": {
+    "$oid": "629c693a1d2d88e41dc6cb45"
+  }
+},{
+  "_id": {
+    "$oid": "629c6f8d1d2d88e41dc6cb90"
+  },
+  "boxID": {
+    "$oid": "629c6db61d2d88e41dc6cb73"
+  },
+  "itemTypeID": {
+    "$oid": "629c693a1d2d88e41dc6cb45"
+  }
+},{
+  "_id": {
+    "$oid": "629c6fae1d2d88e41dc6cb93"
+  },
+  "boxID": {
+    "$oid": "629c6db61d2d88e41dc6cb73"
+  },
+  "itemTypeID": {
+    "$oid": "629c693a1d2d88e41dc6cb45"
+  }
+},{
+  "_id": {
+    "$oid": "629c6fd21d2d88e41dc6cb96"
+  },
+  "boxID": {
+    "$oid": "629c6db61d2d88e41dc6cb73"
+  },
+  "itemTypeID": {
+    "$oid": "629c693a1d2d88e41dc6cb45"
+  }
+},{
+  "_id": {
+    "$oid": "629c6ff51d2d88e41dc6cb99"
+  },
+  "boxID": {
+    "$oid": "629c6db61d2d88e41dc6cb73"
+  },
+  "itemTypeID": {
+    "$oid": "629c693a1d2d88e41dc6cb45"
+  }
+},{
+  "_id": {
+    "$oid": "629c701f1d2d88e41dc6cb9c"
+  },
+  "boxID": {
+    "$oid": "629c6db61d2d88e41dc6cb73"
+  },
+  "itemTypeID": {
+    "$oid": "629c693a1d2d88e41dc6cb45"
+  }
+},{
+  "_id": {
+    "$oid": "629c70411d2d88e41dc6cb9f"
+  },
+  "boxID": {
+    "$oid": "629c6db61d2d88e41dc6cb73"
+  },
+  "itemTypeID": {
+    "$oid": "629c693a1d2d88e41dc6cb45"
+  }
+},{
+  "_id": {
+    "$oid": "629c71c61d2d88e41dc6cba3"
+  },
+  "boxID": {
+    "$oid": "629c71771d2d88e41dc6cba2"
+  },
+  "itemTypeID": {
+    "$oid": "629c693a1d2d88e41dc6cb45"
+  }
+},{
+  "_id": {
+    "$oid": "629c742d1d2d88e41dc6cbac"
+  },
+  "boxID": {
+    "$oid": "629c72611d2d88e41dc6cba8"
+  },
+  "itemTypeID": {
+    "$oid": "629c72ed1d2d88e41dc6cbaa"
+  }
+},{
+  "_id": {
+    "$oid": "629c74761d2d88e41dc6cbaf"
+  },
+  "boxID": {
+    "$oid": "629c72611d2d88e41dc6cba8"
+  },
+  "itemTypeID": {
+    "$oid": "629c72ed1d2d88e41dc6cbaa"
+  }
+},{
+  "_id": {
+    "$oid": "629c74d41d2d88e41dc6cbb5"
+  },
+  "boxID": {
+    "$oid": "629c72611d2d88e41dc6cba8"
+  },
+  "itemTypeID": {
+    "$oid": "629c72ed1d2d88e41dc6cbaa"
+  }
+},{
+  "_id": {
+    "$oid": "629c86191d2d88e41dc6cbc0"
+  },
+  "boxID": {
+    "$oid": "629c85911d2d88e41dc6cbbe"
+  }
+},{
+  "_id": {
+    "$oid": "629c86641d2d88e41dc6cbc4"
+  },
+  "boxID": {
+    "$oid": "629c85b11d2d88e41dc6cbbf"
+  },
+  "itemTypeID": {
+    "$oid": "629c84f81d2d88e41dc6cbbd"
+  }
+},{
+  "_id": {
+    "$oid": "2dfe4c5a050cf7444cc6b0fa"
+  },
+  "boxID": {
+    "$oid": "629726159ab748c1792e8730"
+  },
+  "itemTypeID": {
+    "$oid": "628d84bd4b0f4c4258439998"
+  }
+}]

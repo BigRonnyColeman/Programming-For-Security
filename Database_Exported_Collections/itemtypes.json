@@ -1,0 +1,65 @@
+[{
+  "_id": {
+    "$oid": "628da59b4b0f4c425843999e"
+  },
+  "itemName": "Excerise Book 48 Page",
+  "itemSel": 0.15,
+  "itemCost": 0.05,
+  "supplier": "Keji"
+},{
+  "_id": {
+    "$oid": "628d84bd4b0f4c4258439998"
+  },
+  "itemName": "Eraser",
+  "itemSel": 1.68,
+  "itemCost": 0.5,
+  "supplier": "Keji"
+},{
+  "_id": {
+    "$oid": "629c68c61d2d88e41dc6cb44"
+  },
+  "itemName": "Glue Stick",
+  "itemSel": 2.49,
+  "itemCost": 0.97,
+  "supplier": "Studymate"
+},{
+  "_id": {
+    "$oid": "629c693a1d2d88e41dc6cb45"
+  },
+  "itemName": "A4 Copy paper 500",
+  "itemSel": 3.99,
+  "itemCost": 0.99,
+  "supplier": "Keji"
+},{
+  "_id": {
+    "$oid": "629c72ed1d2d88e41dc6cbaa"
+  },
+  "itemName": "Kilometrico Ballpoint Pens Black 10 Pack",
+  "itemSel": 3.99,
+  "itemCost": 1.04,
+  "supplier": "Papermate"
+},{
+  "_id": {
+    "$oid": "629c73a81d2d88e41dc6cbab"
+  },
+  "itemName": "Ballpoint Pens Assorted 10 pack",
+  "itemSel": 0.99,
+  "itemCost": 0.54,
+  "supplier": "Keji"
+},{
+  "_id": {
+    "$oid": "629c84b91d2d88e41dc6cbbc"
+  },
+  "itemName": "Correction Tape",
+  "itemSel": 0.99,
+  "itemCost": 0.35,
+  "supplier": "Keji"
+},{
+  "_id": {
+    "$oid": "629c84f81d2d88e41dc6cbbd"
+  },
+  "itemName": "Textar connector 30 pack",
+  "itemSel": 9.98,
+  "itemCost": 5.7,
+  "supplier": "Faber-Castle"
+}]

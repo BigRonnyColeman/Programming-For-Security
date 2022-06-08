@@ -1,0 +1,55 @@
+[{
+  "_id": {
+    "$oid": "629724d99ab748c1792e8727"
+  },
+  "location": "randomlocation",
+  "RFIDSerialNumber": "4xY3t"
+},{
+  "_id": {
+    "$oid": "6297262d9ab748c1792e8731"
+  },
+  "location": "B-2",
+  "RFIDSerialNumber": "9jRe4"
+},{
+  "_id": {
+    "$oid": "629729299ab748c1792e8756"
+  },
+  "location": "C-1",
+  "RFIDSerialNumber": "3rFg7"
+},{
+  "_id": {
+    "$oid": "629c69db1d2d88e41dc6cb46"
+  },
+  "location": "A-5",
+  "RFIDSerialNumber": "83N8k"
+},{
+  "_id": {
+    "$oid": "629c6db61d2d88e41dc6cb73"
+  },
+  "location": "A-2",
+  "RFIDSerialNumber": "Hne53"
+},{
+  "_id": {
+    "$oid": "629c71771d2d88e41dc6cba2"
+  },
+  "location": "F-6",
+  "RFIDSerialNumber": "ji9Yq"
+},{
+  "_id": {
+    "$oid": "629c72611d2d88e41dc6cba8"
+  },
+  "location": "B-1",
+  "RFIDSerialNumber": "k7H2b"
+},{
+  "_id": {
+    "$oid": "629c85911d2d88e41dc6cbbe"
+  },
+  "location": "D-4",
+  "RFIDSerialNumber": "hmw8y"
+},{
+  "_id": {
+    "$oid": "629c85b11d2d88e41dc6cbbf"
+  },
+  "location": "B-5",
+  "RFIDSerialNumber": "y73vg"
+}]
